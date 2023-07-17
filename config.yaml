@@ -157,7 +157,7 @@ outlines:
     - operation: subtract
       name: keys
 pcbs:
-  tutorial:
+  chouchou:
     outlines:
       main:
         outline:
