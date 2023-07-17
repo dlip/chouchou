@@ -25,7 +25,7 @@ points:
         ring:
           key:
             stagger: 8
-            spread: 20
+            spread: 23
             splay: -10
           rows:
             top.mcu_pin: GP27
@@ -163,14 +163,14 @@ pcbs:
         outline:
           board
     footprints:
-      # choc_hotswap:
-      #   what: choc
-      #   where: true
-      #   params:
-      #     keycaps: true
-      #     hotswap: true
-      #     from: "{{mcu_pin}}"
-      #     to: GND
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{mcu_pin}}"
+          to: GND
       choc:
         what: choc
         where: true
