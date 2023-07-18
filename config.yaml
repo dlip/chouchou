@@ -188,6 +188,31 @@ pcbs:
         params:
           reverse: true
           GND: GND
+      holeTopLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_pinky_top]
+          shift: [0.5px + 3,0.5py]
+      holeBottomLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_pinky_top]
+          shift: [0.5px + 3,-35]
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_pinky_top]
+          shift: [0.5px + 3,0.5py]
+      holeBottomRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_pinky_top]
+          shift: [0.5px + 3,-35]
+      holeMiddle:
+        what: mountinghole
+        where:
+          ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+          shift: [0,-40]
 cases:
   bottom:
     - name: board

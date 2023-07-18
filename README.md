@@ -1,4 +1,4 @@
-# WIP Chouchou  keyboard
+# WIP Chouchou keyboard
 
 (Japanese for butterfly)
 

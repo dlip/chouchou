@@ -1,5 +1,8 @@
 /output
 /kicad/gerber
 /kicad/gerber.zip
-chouchou-backups
-fp-info-cache
+/kicad/chouchou-backups
+/kicad/fp-info-cache
+/kicad/*.lck
+/kicad/_autosave*
+/node_modules
