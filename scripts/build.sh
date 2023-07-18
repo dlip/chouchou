@@ -3,5 +3,5 @@ set -euo pipefail
 
 npm exec ergogen -- .
 cp output/pcbs/chouchou.kicad_pcb kicad/
-npm exec openjscad -- output/cases/bottom.jscad -of stla -o output/cases/bottom.stl
+for i in output/cases/*.jscad; do npm exec openjscad -- "$i" -of stla; done
 # fstl output/cases/bottom.stl

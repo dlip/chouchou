@@ -5,6 +5,12 @@ units:
   # Padding Variables
   px: kx + 2
   py: ky + 2
+  # Double Padding Variables
+  dpx: kx + 8
+  dpy: ky + 8
+  # M2 Screw Inserts
+  screwSize: 1.5
+  standoffSize: 2.5
 points:
   zones:
     matrix:
@@ -152,10 +158,117 @@ outlines:
           shift: [-0.5px,-0.6py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
+  xlBoard:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_ring_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_middle_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: matrix_middle_top
+          shift: [0.5dpx,0.5dpy]
+        - ref: matrix_index_top
+          shift: [0.6dpx,0.4dpy]
+        - ref: mirror_matrix_index_top
+          shift: [0.6dpx,0.4dpy]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5dpx,0.5dpy]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.5dpx,0.5dpy]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5dpx,-0.5dpy]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5dpx,-0.6dpy]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.75dpx,0.5dpy]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.75dpx,-0.5dpy]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [-0.75dpx,-0.5dpy]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [0.5dpx,-0.5dpy]
+        - ref: thumbs_outer_cluster
+          shift: [0.5dpx,-0.5dpy]
+        - ref: thumbs_outer_cluster
+          shift: [-0.75dpx,-0.5dpy]
+        - ref: thumbs_inner_cluster
+          shift: [-0.75dpx,-0.5dpy]
+        - ref: thumbs_inner_cluster
+          shift: [-0.75dpx,0.5dpy]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5dpx,-0.6dpy]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5dpx,-0.5dpy]
   combo:
     - name: board
     - operation: subtract
       name: keys
+  case:
+    - name: xlBoard
+    - operation: subtract
+      name: board
+    - operation: add
+      name: keys
+  mounting:
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [matrix_pinky_top]
+        shift: [0.5px + 3,0.5py]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [matrix_pinky_top]
+        shift: [0.5px + 3,-35]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [mirror_matrix_pinky_top]
+        shift: [0.5px + 3,0.5py]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [mirror_matrix_pinky_top]
+        shift: [0.5px + 3,-35]
+    - what: circle
+      radius: screwSize
+      where:
+        ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+        shift: [0,-40]
+  standoff:
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_pinky_top]
+        shift: [0.5px + 3,0.5py]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_pinky_top]
+        shift: [0.5px + 3,-35]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [mirror_matrix_pinky_top]
+        shift: [0.5px + 3,0.5py]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [mirror_matrix_pinky_top]
+        shift: [0.5px + 3,-35]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+        shift: [0,-40]
 pcbs:
   chouchou:
     outlines:
@@ -217,3 +330,38 @@ cases:
   bottom:
     - name: board
       extrude: 1
+  xlBottom:
+    - name: xlBoard
+      extrude: 1
+  _outerWall:
+    - name: xlBoard
+      extrude: 4
+  _innerWall:
+    - name: board
+      extrude: 4
+  wall:
+    - what: case
+      name: _outerWall
+      operation: add
+    - what: case
+      name: _innerWall
+      operation: subtract
+  _holes:
+    - name: mounting
+      extrude: 4
+  _standoffs:
+    - name: standoff
+      extrude: 4
+  case:
+    - what: case
+      name: _standoffs
+      operation: add
+    - what: case
+      name: _holes
+      operation: subtract
+    - what: case
+      name: xlBottom
+      operation: add
+    - what: case
+      name: wall
+      operation: add
