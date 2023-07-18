@@ -61,12 +61,12 @@ points:
         spread: 1kx
       anchor:
         ref: matrix_index_bottom
-        shift: [14, -10]
+        shift: [14, 0]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: -3
+            splay: 3
             rotate: 90
             mcu_pin: GP11
             mirror.mcu_pin: GP8
