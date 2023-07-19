@@ -1,5 +1,6 @@
 /output
-/kicad/gerber
+/kicad/gerber_to_order/*
+!/kicad/gerber_to_order/*.zip
 /kicad/chouchou-backups
 /kicad/fp-info-cache
 /kicad/*.lck
