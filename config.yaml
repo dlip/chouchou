@@ -137,6 +137,8 @@ outlines:
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
+          shift: [0.75px,0.5py]
+        - ref: mirror_thumbs_inner_cluster
           shift: [-0.75px,0.5py]
         - ref: mirror_thumbs_inner_cluster
           shift: [-0.75px,-0.5py]
@@ -152,53 +154,15 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: thumbs_inner_cluster
           shift: [-0.75px,0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [0.75px,0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   xlBoard:
-    - what: polygon
-      operation: stack
-      fillet: 2
-      points:
-        - ref: matrix_pinky_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: matrix_ring_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: matrix_middle_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: matrix_middle_top
-          shift: [0.5dpx,0.5dpy]
-        - ref: matrix_index_top
-          shift: [0.6dpx,0.4dpy]
-        - ref: mirror_matrix_index_top
-          shift: [0.6dpx,0.4dpy]
-        - ref: mirror_matrix_middle_top
-          shift: [0.5dpx,0.5dpy]
-        - ref: mirror_matrix_middle_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: mirror_matrix_ring_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: mirror_matrix_pinky_top
-          shift: [-0.5dpx,0.5dpy]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.5dpx,-0.5dpy]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [-0.75dpx,0.5dpy]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [-0.75dpx,-0.5dpy]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [-0.75dpx,-0.5dpy]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [0.5dpx,-0.5dpy]
-        - ref: thumbs_outer_cluster
-          shift: [0.5dpx,-0.5dpy]
-        - ref: thumbs_outer_cluster
-          shift: [-0.75dpx,-0.5dpy]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75dpx,-0.5dpy]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75dpx,0.5dpy]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5dpx,-0.5dpy]
+    - what: outline
+      name: board
+      expand: 2
+
   combo:
     - name: board
     - operation: subtract
@@ -297,27 +261,42 @@ pcbs:
         what: mountinghole
         where:
           ref: [matrix_pinky_top]
-          shift: [0.5px + 3,0.5py]
-      holeBottomLeft:
-        what: mountinghole
-        where:
-          ref: [matrix_pinky_top]
-          shift: [0.5px + 3,-35]
+          shift: [0.5px + 3,0.5py + 3]
       holeTopRight:
         what: mountinghole
         where:
           ref: [mirror_matrix_pinky_top]
-          shift: [0.5px + 3,0.5py]
+          shift: [0.5px + 3,0.5py + 3]
+      holeBottomLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_pinky_bottom]
+          shift: [0.5px + 3,-10]
       holeBottomRight:
         what: mountinghole
         where:
-          ref: [mirror_matrix_pinky_top]
-          shift: [0.5px + 3,-35]
-      holeMiddle:
+          ref: [mirror_matrix_pinky_bottom]
+          shift: [0.5px + 3,-10]
+      holeMiddleTopLeft:
         what: mountinghole
         where:
-          ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-          shift: [0,-40]
+          ref: [matrix_index_top]
+          shift: [-0.5px - 3,11]
+      holeMiddleTopRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_index_top]
+          shift: [-0.5px - 3,11]
+      holeMiddleBottomLeft:
+        what: mountinghole
+        where:
+          ref: [thumbs_outer_cluster]
+          shift: [0.5px + 3,-0.5px]
+      holeMiddleBottomRight:
+        what: mountinghole
+        where:
+          ref: [mirror_thumbs_outer_cluster]
+          shift: [0.5px + 3,-0.5px]
 cases:
   bottom:
     - name: board
