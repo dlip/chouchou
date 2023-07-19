@@ -190,57 +190,58 @@ outlines:
     - operation: add
       name: keys
   mounting:
-    - what: circle
+    holeTopLeft:
       radius: screwSize
+      what: circle
       where:
         ref: [matrix_pinky_top]
-        shift: [0.5px + 3,0.5py]
-    - what: circle
+        shift: [0.5px + 3,0.5py + 3]
+    holeTopRight:
       radius: screwSize
-      where:
-        ref: [matrix_pinky_top]
-        shift: [0.5px + 3,-35]
-    - what: circle
-      radius: screwSize
+      what: circle
       where:
         ref: [mirror_matrix_pinky_top]
-        shift: [0.5px + 3,0.5py]
-    - what: circle
+        shift: [0.5px + 3,0.5py + 3]
+    holeBottomLeft:
       radius: screwSize
+      what: circle
       where:
-        ref: [mirror_matrix_pinky_top]
-        shift: [0.5px + 3,-35]
-    - what: circle
+        ref: [matrix_middle_bottom]
+        shift: [0,-0.5py - 3]
+    holeBottomRight:
       radius: screwSize
+      what: circle
       where:
-        ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-        shift: [0,-40]
+        ref: [mirror_matrix_middle_bottom]
+        shift: [0,-0.5py - 3]
+    holeMiddleTopLeft:
+      radius: screwSize
+      what: circle
+      where:
+        ref: [matrix_index_top]
+        shift: [-0.5px - 3, 11]
+    holeMiddleTopRight:
+      radius: screwSize
+      what: circle
+      where:
+        ref: [mirror_matrix_index_top]
+        shift: [-0.5px - 3, 11]
+    holeMiddleBottomLeft:
+      radius: screwSize
+      what: circle
+      where:
+        ref: [thumbs_outer_cluster]
+        shift: [-0.5kx - 3, 0.5kx]
+    holeMiddleBottomRight:
+      radius: screwSize
+      what: circle
+      where:
+        ref: [mirror_thumbs_outer_cluster]
+        shift: [-0.5kx - 3, 0.5kx]
   standoff:
-    - what: circle
-      radius: standoffSize
-      where:
-        ref: [matrix_pinky_top]
-        shift: [0.5px + 3,0.5py]
-    - what: circle
-      radius: standoffSize
-      where:
-        ref: [matrix_pinky_top]
-        shift: [0.5px + 3,-35]
-    - what: circle
-      radius: standoffSize
-      where:
-        ref: [mirror_matrix_pinky_top]
-        shift: [0.5px + 3,0.5py]
-    - what: circle
-      radius: standoffSize
-      where:
-        ref: [mirror_matrix_pinky_top]
-        shift: [0.5px + 3,-35]
-    - what: circle
-      radius: standoffSize
-      where:
-        ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-        shift: [0,-40]
+    - what: outline
+      name: mounting
+      expand: standoffSize - screwSize
 pcbs:
   chouchou:
     outlines:
