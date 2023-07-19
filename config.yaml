@@ -136,6 +136,14 @@ outlines:
           shift: [-0.5px,0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.6px,-0.5py]
+        - ref: mirror_matrix_index_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [1.26px,0.5py]
         - ref: mirror_thumbs_inner_cluster
           shift: [0.75px,0.5py]
         - ref: mirror_thumbs_inner_cluster
@@ -146,6 +154,9 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: mirror_thumbs_outer_cluster
           shift: [0.75px,-0.5py]
+        - ref:
+            aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+            shift: [0,-40]
         - ref: thumbs_outer_cluster
           shift: [0.75px,-0.5py]
         - ref: thumbs_outer_cluster
@@ -155,14 +166,19 @@ outlines:
         - ref: thumbs_inner_cluster
           shift: [-0.75px,0.5py]
         - ref: thumbs_inner_cluster
-          shift: [0.75px,0.5py]
+          shift: [1.26px,0.5py]
+        - ref: matrix_index_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_ring_bottom
+          shift: [-0.6px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   xlBoard:
     - what: outline
       name: board
       expand: 2
-
   combo:
     - name: board
     - operation: subtract
@@ -270,33 +286,33 @@ pcbs:
       holeBottomLeft:
         what: mountinghole
         where:
-          ref: [matrix_pinky_bottom]
-          shift: [0.5px + 3,-10]
+          ref: [matrix_middle_bottom]
+          shift: [0,-0.5py - 3]
       holeBottomRight:
         what: mountinghole
         where:
-          ref: [mirror_matrix_pinky_bottom]
-          shift: [0.5px + 3,-10]
+          ref: [mirror_matrix_middle_bottom]
+          shift: [0,-0.5py - 3]
       holeMiddleTopLeft:
         what: mountinghole
         where:
           ref: [matrix_index_top]
-          shift: [-0.5px - 3,11]
+          shift: [-0.5px - 3, 11]
       holeMiddleTopRight:
         what: mountinghole
         where:
           ref: [mirror_matrix_index_top]
-          shift: [-0.5px - 3,11]
+          shift: [-0.5px - 3, 11]
       holeMiddleBottomLeft:
         what: mountinghole
         where:
           ref: [thumbs_outer_cluster]
-          shift: [0.5px + 3,-0.5px]
+          shift: [-0.5kx - 3, 0.5kx]
       holeMiddleBottomRight:
         what: mountinghole
         where:
           ref: [mirror_thumbs_outer_cluster]
-          shift: [0.5px + 3,-0.5px]
+          shift: [-0.5kx - 3, 0.5kx]
 cases:
   bottom:
     - name: board
