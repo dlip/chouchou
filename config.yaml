@@ -136,8 +136,6 @@ outlines:
           shift: [-0.5px,0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.5px,-0.6py]
         - ref: mirror_thumbs_inner_cluster
           shift: [-0.75px,0.5py]
         - ref: mirror_thumbs_inner_cluster
@@ -154,8 +152,6 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: thumbs_inner_cluster
           shift: [-0.75px,0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5px,-0.6py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   xlBoard:
@@ -185,8 +181,6 @@ outlines:
           shift: [-0.5dpx,0.5dpy]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5dpx,-0.5dpy]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.5dpx,-0.6dpy]
         - ref: mirror_thumbs_inner_cluster
           shift: [-0.75dpx,0.5dpy]
         - ref: mirror_thumbs_inner_cluster
@@ -203,8 +197,6 @@ outlines:
           shift: [-0.75dpx,-0.5dpy]
         - ref: thumbs_inner_cluster
           shift: [-0.75dpx,0.5dpy]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5dpx,-0.6dpy]
         - ref: matrix_pinky_bottom
           shift: [-0.5dpx,-0.5dpy]
   combo:
