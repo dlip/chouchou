@@ -9,8 +9,13 @@ units:
   dpx: kx + 8
   dpy: ky + 8
   # M2 Screw Inserts
-  screwSize: 1.5
-  standoffSize: 2.5
+  screwRadius: 1.5
+  standoffThickness: 3
+  standoffDepth: 3
+  # Case
+  pcbThickness: 1.6
+  baseThickness: 3
+  wallThickness: 3
 points:
   zones:
     matrix:
@@ -178,7 +183,7 @@ outlines:
   xlBoard:
     - what: outline
       name: board
-      expand: 2
+      expand: wallThickness
   combo:
     - name: board
     - operation: subtract
@@ -191,49 +196,49 @@ outlines:
       name: keys
   mounting:
     holeTopLeft:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [matrix_pinky_top]
         shift: [0.5px + 3,0.5py + 3]
     holeTopRight:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [mirror_matrix_pinky_top]
         shift: [0.5px + 3,0.5py + 3]
     holeBottomLeft:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [matrix_middle_bottom]
         shift: [0,-0.5py - 3]
     holeBottomRight:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [mirror_matrix_middle_bottom]
         shift: [0,-0.5py - 3]
     holeMiddleTopLeft:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [matrix_index_top]
         shift: [-0.5px - 3, 11]
     holeMiddleTopRight:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [mirror_matrix_index_top]
         shift: [-0.5px - 3, 11]
     holeMiddleBottomLeft:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [thumbs_outer_cluster]
         shift: [-0.5kx - 3, 0.5kx]
     holeMiddleBottomRight:
-      radius: screwSize
+      radius: screwRadius
       what: circle
       where:
         ref: [mirror_thumbs_outer_cluster]
@@ -241,7 +246,7 @@ outlines:
   standoff:
     - what: outline
       name: mounting
-      expand: standoffSize - screwSize
+      expand: standoffThickness
 pcbs:
   chouchou:
     outlines:
@@ -316,17 +321,14 @@ pcbs:
           shift: [-0.5kx - 3, 0.5kx]
 cases:
   bottom:
-    - name: board
-      extrude: 1
-  xlBottom:
     - name: xlBoard
-      extrude: 1
+      extrude: baseThickness
   _outerWall:
     - name: xlBoard
-      extrude: 4
+      extrude: baseThickness + standoffDepth + pcbThickness
   _innerWall:
     - name: board
-      extrude: 4
+      extrude: baseThickness + standoffDepth + pcbThickness
   wall:
     - what: case
       name: _outerWall
@@ -336,10 +338,10 @@ cases:
       operation: subtract
   _holes:
     - name: mounting
-      extrude: 4
+      extrude: baseThickness + standoffDepth
   _standoffs:
     - name: standoff
-      extrude: 4
+      extrude: baseThickness + standoffDepth
   case:
     - what: case
       name: _standoffs
@@ -348,7 +350,7 @@ cases:
       name: _holes
       operation: subtract
     - what: case
-      name: xlBottom
+      name: bottom
       operation: add
     - what: case
       name: wall
