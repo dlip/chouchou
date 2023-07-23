@@ -37,4 +37,4 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 #### Instructions
 
 - Use a soldering iron to melt the insert nuts into the holes in the case
-- Screw the board onto the nuts using the screws
+- Screw the board to the case
