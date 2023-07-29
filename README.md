@@ -34,6 +34,8 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 
 ### Case
 
+![Case](images/case.jpg)
+
 #### Parts
 
 The screws/nuts are optional, its a pretty tight fit so you might not need them.
