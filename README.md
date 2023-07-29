@@ -15,6 +15,8 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 
 ### Board
 
+![Board](images/board.jpg)
+
 #### Parts
 
 - Send the [Gerber](kicad/gerber_to_order) file to the PCB manufacturer of your choice
