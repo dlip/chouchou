@@ -36,9 +36,11 @@ I designed it for my largish hands so if you have smaller hands its probably not
 
 #### Parts
 
+The screws/nuts are optional, its a pretty tight fit so you might not need them.
+
 - 3D print the [case.stl](case/case.stl) file
-- 8 x Knurled Insert Nuts (M2 x 3mm Length x 3.2mm OD) [example](https://www.amazon.com/dp/B07LBQFNQD)
-- 8 x M2 3mm flat screws [example](https://www.amazon.com/gp/product/B01FTI8TM8/) 
+- (optional)  8 x Knurled Insert Nuts (M2 x 3mm Length x 3.2mm OD) [example](https://www.amazon.com/dp/B07LBQFNQD)
+- (optional) 8 x M2 3mm flat screws [example](https://www.amazon.com/gp/product/B01FTI8TM8/) 
 
 #### Instructions
 
