@@ -1,9 +1,15 @@
 # Chouchou keyboard
 
-This is WIP (Please don't use until I can test everything)
+![Chouchou](images/chouchou.jpg)
 
 Chouchou (Japanese for butterfly) is a minimalist unibody keyboard designed to be used with the [Taipo](https://inkeys.wiki/en/keymaps/taipo) layout.
 It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts it provides is the exact number of keys Taipo requires.
+I designed it for my largish hands so if you have smaller hands its probably not going to be comfortable. I might make a more compact version in the future if people request it.
+
+## Issues
+
+- I still haven't perfected the QMK firmware, its usable but some of the left/right rolls will need to be improved for higher speed typing.
+- The case gets blocked by one of the screw mounts when using hotswap sockets, its easy enough to cut the side a bit with a knife though. 
 
 ## Build Your Own
 
@@ -38,3 +44,7 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 
 - Use a soldering iron to melt the insert nuts into the holes in the case
 - Screw the board to the case
+
+### Attribution
+
+Butterfly image by [Freepik](https://www.freepik.com/free-vector/hand-drawn-butterfly-outline-pack_15636314.htm#query=butterfly&position=29&from_view=keyword&track=sph)
