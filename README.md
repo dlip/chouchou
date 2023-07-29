@@ -21,7 +21,7 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 
 - Send the [Gerber](kicad/gerber_to_order) file to the PCB manufacturer of your choice
 - 1 x RP2040-Zero
-- 20 x low profile choc switches and keycaps. Since you're going to be doing a lot of combos, I recommend lighter switches. I use 25g light blue, but 35g pro red is not bad either.
+- 20 x low profile choc switches and keycaps. Since you're going to be doing a lot of combos, I recommend lighter switches. I use 25g light blue, but 35g pro red is not bad either. You can use 1.5U keycaps for the thumbs, the socket has been rotated 90 degrees to accomodate.
 - (optional) 20 x kailh hotswap sockets
 - (optional) RP2040-Zero headers
 
