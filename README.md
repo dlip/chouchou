@@ -1,4 +1,4 @@
-# Chouchou keyboard
+# Chouchou Keyboard/Fight Pad
 
 ![Chouchou](images/chouchou.jpg)
 
