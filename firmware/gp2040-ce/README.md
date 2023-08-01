@@ -19,4 +19,4 @@
 
 The default layout is below, but you can change keys by reassign them using the pin numbers below under the "Configuration" -> "Pin Mapping" menu. For example, to use a Hitbox style up arrow, set Up to pin 10. 
 
-![Layout](../images/layout.png)
+![Layout](../../images/layout.png)
