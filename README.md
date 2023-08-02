@@ -24,9 +24,8 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 - (optional) 20 x kailh hotswap sockets
 - (optional) RP2040-Zero headers
 
-#### Instructions
 
-### Firmware
+#### Firmware
 
 - [QMK](https://github.com/dlip/qmk_firmware/tree/chouchou/keyboards/chouchou)
   - Taipo Keyboard
@@ -35,6 +34,8 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 - [GP2040-CE](firmware/gp2040-ce)
   - PC or console gamepad
   - Note: PS5 requires an adapter like the [Wingman FGC](https://shop.brookaccessory.com/en/products/wingman-fgc)
+
+#### Instructions
 
 - Solder the RP2040-Zero to the board either directly or using the headers you purchased
 - Build and flash the firmware
