@@ -10,8 +10,6 @@
 - Select "Configuration", "Data Backup and Restoration"
 - Under "Restore From File" select "Load"
 - Select the `chouchou.gp2040` file in this folder
-- Optionally configure the layout following the instructions below
-- Optionally configure the input mode under "Settings"
 - Select "Reboot" -> "Controller"
 - To get back to the configuration webpage in the future, hold key 29 (start) while connecting the USB
 
