@@ -6,6 +6,10 @@ Chouchou (Japanese for butterfly) is a minimalist unibody keyboard designed to b
 
 It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts it provides is the exact number of keys Taipo requires. It was created with [Ergogen](https://github.com/ergogen/ergogen) and [KiCad](https://www.kicad.org). I designed it for my largish hands so if you have smaller hands its probably not going to be comfortable. I might make a more compact version in the future if people request it.
 
+## Fight Pad / Pin Layout
+
+![Layout](../../images/layout.png)
+
 ## Build Your Own
 
 ### Board
