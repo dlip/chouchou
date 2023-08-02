@@ -8,7 +8,7 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
 
 ## Fight Pad / Pin Layout
 
-![Layout](../../images/layout.png)
+![Layout](images/layout.png)
 
 ## Build Your Own
 
