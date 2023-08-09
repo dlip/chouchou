@@ -30,8 +30,8 @@ points:
           rows:
             top.mcuLeft_pin: GP26
             bottom.mcuLeft_pin: GP12
-            top.mirror.mcuRight_pin: GP26
-            bottom.mirror.mcuRight_pin: GP12
+            top.mirror.mcuRight_pin: rGP26
+            bottom.mirror.mcuRight_pin: rGP12
         ring:
           key:
             stagger: 4
@@ -40,8 +40,8 @@ points:
           rows:
             top.mcuLeft_pin: GP27
             bottom.mcuLeft_pin: GP13
-            top.mirror.mcuRight_pin: GP27
-            bottom.mirror.mcuRight_pin: GP13
+            top.mirror.mcuRight_pin: rGP27
+            bottom.mirror.mcuRight_pin: rGP13
         middle:
           key:
             stagger: 5
@@ -50,8 +50,8 @@ points:
           rows:
             top.mcuLeft_pin: GP28
             bottom.mcuLeft_pin: GP14
-            top.mirror.mcuRight_pin: GP28
-            bottom.mirror.mcuRight_pin: GP14
+            top.mirror.mcuRight_pin: rGP28
+            bottom.mirror.mcuRight_pin: rGP14
         index:
           key:
             stagger: -8
@@ -60,8 +60,8 @@ points:
           rows:
             top.mcuLeft_pin: GP29
             bottom.mcuLeft_pin: GP15
-            top.mirror.mcuRight_pin: GP29
-            bottom.mirror.mcuRight_pin: GP15
+            top.mirror.mcuRight_pin: rGP29
+            bottom.mirror.mcuRight_pin: rGP15
       rows:
         bottom:
         top:
@@ -79,13 +79,13 @@ points:
             splay: 4
             rotate: 90
             mcuLeft_pin: GP11
-            mirror.mcuRight_pin: GP11
+            mirror.mcuRight_pin: rGP11
         outer:
           key:
             width: 1.5kx
             rotate: 90
             mcuLeft_pin: GP10
-            mirror.mcuRight_pin: GP10
+            mirror.mcuRight_pin: rGP10
       rows:
         cluster:
           shift: [0, -2ky]
@@ -246,56 +246,74 @@ pcbs:
         outline:
           board
     footprints:
-      # chocHotswapLeft:
-      #   what: choc
-      #   where: /^(thumb|matrix)/
-      #   params:
-      #     keycaps: true
-      #     hotswap: true
-      #     from: "{{mcuLeft_pin}}"
-      #     to: GND
-      # chocLeft:
-      #   what: choc
-      #   where: /^(thumb|matrix)/
-      #   adjust:
-      #     rotate: 180
-      #   params:
-      #     keycaps: true
-      #     from: "{{mcuLeft_pin}}"
-      #     to: GND
-      # chocHotswapRight:
-      #   what: choc
-      #   where: /^mirror/
-      #   params:
-      #     keycaps: true
-      #     hotswap: true
-      #     from: "{{mcuRight_pin}}"
-      #     to: GND
-      # chocRight:
-      #   what: choc
-      #   where: /^mirror/
-      #   adjust:
-      #     rotate: 180
-      #   params:
-      #     keycaps: true
-      #     from: "{{mcuRight_pin}}"
-      #     to: GND
+      chocHotswapLeft:
+        what: choc
+        where: /^(thumb|matrix)/
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{mcuLeft_pin}}"
+          to: GND
+      chocLeft:
+        what: choc
+        where: /^(thumb|matrix)/
+        adjust:
+          rotate: 180
+        params:
+          keycaps: true
+          from: "{{mcuLeft_pin}}"
+          to: GND
+      chocHotswapRight:
+        what: choc
+        where: /^mirror/
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{mcuRight_pin}}"
+          to: rGND
+      chocRight:
+        what: choc
+        where: /^mirror/
+        adjust:
+          rotate: 180
+        params:
+          keycaps: true
+          from: "{{mcuRight_pin}}"
+          to: rGND
       mcuLeft:
         what: rp2040zero
         where:
           ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
           shift: [-28,-22]
-        params:
-          # reverse: true
-          GND: GND
       mcuRight:
         what: rp2040zero
         where:
           ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
           shift: [8,-22]
         params:
-          # reverse: true
-          GND: GND
+          P5V: rP5V
+          GND: rGND
+          P3V3: rP3V3
+          GP29: rGP29
+          GP28: rGP28
+          GP27: rGP27
+          GP26: rGP26
+          GP15: rGP15
+          GP14: rGP14
+          GP13: rGP13
+          GP12: rGP12
+          GP11: rGP11
+          GP10: rGP10
+          GP9: rGP9
+          GP8: rGP8
+          GP7: rGP7
+          GP6: rGP6
+          GP5: rGP5
+          GP4: rGP4
+          GP3: rGP3
+          GP2: rGP2
+          GP1: rGP1
+          GP0: rGP0
       holeTopLeft:
         what: mountinghole
         where:
