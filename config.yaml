@@ -26,42 +26,42 @@ points:
       columns:
         pinky:
           key:
-            splay: 15
+            splay: 8
           rows:
-            top.mcu_pin: GP26
-            bottom.mcu_pin: GP12
-            top.mirror.mcu_pin: GP3
-            bottom.mirror.mcu_pin: GP7
+            top.mcuLeft_pin: GP26
+            bottom.mcuLeft_pin: GP12
+            top.mirror.mcuRight_pin: GP26
+            bottom.mirror.mcuRight_pin: GP12
         ring:
           key:
-            stagger: 8
+            stagger: 4
             spread: 23
-            splay: -10
+            splay: -4
           rows:
-            top.mcu_pin: GP27
-            bottom.mcu_pin: GP13
-            top.mirror.mcu_pin: GP2
-            bottom.mirror.mcu_pin: GP6
+            top.mcuLeft_pin: GP27
+            bottom.mcuLeft_pin: GP13
+            top.mirror.mcuRight_pin: GP27
+            bottom.mirror.mcuRight_pin: GP13
         middle:
           key:
             stagger: 5
-            spread: 21
-            splay: -5
+            spread: 20
+            splay: -4
           rows:
-            top.mcu_pin: GP28
-            bottom.mcu_pin: GP14
-            top.mirror.mcu_pin: GP1
-            bottom.mirror.mcu_pin: GP5
+            top.mcuLeft_pin: GP28
+            bottom.mcuLeft_pin: GP14
+            top.mirror.mcuRight_pin: GP28
+            bottom.mirror.mcuRight_pin: GP14
         index:
           key:
             stagger: -8
-            spread: 23
-            splay: -5
+            spread: 20
+            splay: -4
           rows:
-            top.mcu_pin: GP29
-            bottom.mcu_pin: GP15
-            top.mirror.mcu_pin: GP0
-            bottom.mirror.mcu_pin: GP4
+            top.mcuLeft_pin: GP29
+            bottom.mcuLeft_pin: GP15
+            top.mirror.mcuRight_pin: GP29
+            bottom.mirror.mcuRight_pin: GP15
       rows:
         bottom:
         top:
@@ -71,27 +71,27 @@ points:
         spread: 1kx
       anchor:
         ref: matrix_index_bottom
-        shift: [14, 0]
+        shift: [8, 0]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: 3
+            splay: 4
             rotate: 90
-            mcu_pin: GP11
-            mirror.mcu_pin: GP8
+            mcuLeft_pin: GP11
+            mirror.mcuRight_pin: GP11
         outer:
           key:
             width: 1.5kx
             rotate: 90
-            mcu_pin: GP10
-            mirror.mcu_pin: GP9
+            mcuLeft_pin: GP10
+            mirror.mcuRight_pin: GP10
       rows:
         cluster:
           shift: [0, -2ky]
   mirror: &mirror
     ref: matrix_index_top
-    distance: 100
+    distance: 80
 outlines:
   raw:
     - what: rectangle
@@ -126,8 +126,6 @@ outlines:
           shift: [-0.5px,0.5py]
         - ref: matrix_middle_top
           shift: [0.5px,0.5py]
-        - ref: matrix_index_top
-          shift: [0.5px,0.5py]
         - ref: thumbs_outer_cluster
           shift: [2.75px,-0.5py]
         - ref: thumbs_outer_cluster
@@ -139,13 +137,7 @@ outlines:
         - ref: thumbs_inner_cluster
           shift: [-0.75px,0.5py]
         - ref: thumbs_inner_cluster
-          shift: [1.26px,0.5py]
-        - ref: matrix_index_bottom
-          shift: [-0.5px,-0.5py]
-        - ref: matrix_ring_bottom
-          shift: [-0.6px,-0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [0.5px,-0.5py]
+          shift: [1.2px,0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   board_right:
@@ -153,8 +145,6 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        - ref: mirror_matrix_index_top
-          shift: [0.5px,0.5py]
         - ref: mirror_matrix_middle_top
           shift: [0.5px,0.5py]
         - ref: mirror_matrix_middle_top
@@ -165,14 +155,8 @@ outlines:
           shift: [-0.5px,0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [0.5px,-0.5py]
-        - ref: mirror_matrix_ring_bottom
-          shift: [-0.6px,-0.5py]
-        - ref: mirror_matrix_index_bottom
-          shift: [-0.5px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [1.26px,0.5py]
+          shift: [1.2px,0.5py]
         - ref: mirror_thumbs_inner_cluster
           shift: [0.75px,0.5py]
         - ref: mirror_thumbs_inner_cluster
@@ -262,38 +246,55 @@ pcbs:
         outline:
           board
     footprints:
-      choc_hotswap:
-        what: choc
-        where: true
-        params:
-          keycaps: true
-          hotswap: true
-          from: "{{mcu_pin}}"
-          to: GND
-      choc:
-        what: choc
-        where: true
-        adjust:
-          rotate: 180
-        params:
-          keycaps: true
-          from: "{{mcu_pin}}"
-          to: GND
-      mcu:
+      # chocHotswapLeft:
+      #   what: choc
+      #   where: /^(thumb|matrix)/
+      #   params:
+      #     keycaps: true
+      #     hotswap: true
+      #     from: "{{mcuLeft_pin}}"
+      #     to: GND
+      # chocLeft:
+      #   what: choc
+      #   where: /^(thumb|matrix)/
+      #   adjust:
+      #     rotate: 180
+      #   params:
+      #     keycaps: true
+      #     from: "{{mcuLeft_pin}}"
+      #     to: GND
+      # chocHotswapRight:
+      #   what: choc
+      #   where: /^mirror/
+      #   params:
+      #     keycaps: true
+      #     hotswap: true
+      #     from: "{{mcuRight_pin}}"
+      #     to: GND
+      # chocRight:
+      #   what: choc
+      #   where: /^mirror/
+      #   adjust:
+      #     rotate: 180
+      #   params:
+      #     keycaps: true
+      #     from: "{{mcuRight_pin}}"
+      #     to: GND
+      mcuLeft:
         what: rp2040zero
         where:
           ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-          shift: [-35,-24]
+          shift: [-28,-22]
         params:
-          reverse: true
+          # reverse: true
           GND: GND
       mcuRight:
         what: rp2040zero
         where:
           ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-          shift: [15,-24]
+          shift: [8,-22]
         params:
-          reverse: true
+          # reverse: true
           GND: GND
       holeTopLeft:
         what: mountinghole
