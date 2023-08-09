@@ -21,7 +21,6 @@ points:
     matrix:
       anchor:
         shift: [100, -100]
-      rotate: -30
       key:
         padding: 1ky
       columns:
@@ -92,7 +91,7 @@ points:
           shift: [0, -2ky]
   mirror: &mirror
     ref: matrix_index_top
-    distance: 2.5kx
+    distance: 100
 outlines:
   raw:
     - what: rectangle
@@ -114,7 +113,7 @@ outlines:
     - what: rectangle
       where: mirror_thumbs_outer_cluster
       size: [1.5kx,ky-0.5]
-  board:
+  board_left:
     - what: polygon
       operation: stack
       fillet: 2
@@ -129,6 +128,31 @@ outlines:
           shift: [0.5px,0.5py]
         - ref: matrix_index_top
           shift: [0.5px,0.5py]
+        - ref: thumbs_outer_cluster
+          shift: [2.75px,-0.5py]
+        - ref: thumbs_outer_cluster
+          shift: [0.75px,-0.5py]
+        - ref: thumbs_outer_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [-0.75px,0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [1.26px,0.5py]
+        - ref: matrix_index_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_ring_bottom
+          shift: [-0.6px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+  board_right:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
         - ref: mirror_matrix_index_top
           shift: [0.5px,0.5py]
         - ref: mirror_matrix_middle_top
@@ -159,27 +183,11 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: mirror_thumbs_outer_cluster
           shift: [0.75px,-0.5py]
-        - ref:
-            aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-            shift: [0,-40]
-        - ref: thumbs_outer_cluster
-          shift: [0.75px,-0.5py]
-        - ref: thumbs_outer_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75px,0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [1.26px,0.5py]
-        - ref: matrix_index_bottom
-          shift: [-0.5px,-0.5py]
-        - ref: matrix_ring_bottom
-          shift: [-0.6px,-0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [0.5px,-0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [2.75px,-0.5py]
+  board:
+    - name: board_left
+    - name: board_right
   xlBoard:
     - what: outline
       name: board
@@ -275,7 +283,15 @@ pcbs:
         what: rp2040zero
         where:
           ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
-          shift: [-10,-24]
+          shift: [-35,-24]
+        params:
+          reverse: true
+          GND: GND
+      mcuRight:
+        what: rp2040zero
+        where:
+          ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+          shift: [15,-24]
         params:
           reverse: true
           GND: GND
