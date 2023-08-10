@@ -257,16 +257,16 @@ pcbs:
           GP12: rGP12
           GP11: rGP11
           GP10: rGP10
-          GP9: rGP9
-          GP8: rGP8
-          GP7: rGP7
-          GP6: rGP6
-          GP5: rGP5
-          GP4: rGP4
-          GP3: rGP3
-          GP2: rGP2
-          GP1: rGP1
-          GP0: rGP0
+          GP9: mirror_thumbs_outer_cluster
+          GP8: mirror_thumbs_inner_cluster
+          GP7: mirror_matrix_pinky_bottom
+          GP6: mirror_matrix_ring_bottom
+          GP5: mirror_matrix_middle_bottom
+          GP4: mirror_matrix_index_bottom
+          GP3: mirror_matrix_pinky_top
+          GP2: mirror_matrix_ring_top
+          GP1: mirror_matrix_middle_top
+          GP0: mirror_matrix_index_top
       holes:
         what: mountinghole
         where: /hole/
