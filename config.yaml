@@ -87,7 +87,7 @@ points:
     holeIndexTop:
       anchor:
         ref: [matrix_index_top]
-        shift: [-0.5px, 12]
+        shift: [-0.2px, 12]
     holeThumbs:
       anchor:
         ref: [thumbs_outer_cluster]
@@ -271,46 +271,9 @@ pcbs:
           GP2: rGP2
           GP1: rGP1
           GP0: rGP0
-      holeTopLeft:
+      holes:
         what: mountinghole
-        where:
-          ref: [matrix_pinky_top]
-          shift: [0.5px + 3,0.5py + 3]
-      holeTopRight:
-        what: mountinghole
-        where:
-          ref: [mirror_matrix_pinky_top]
-          shift: [0.5px + 3,0.5py + 3]
-      holeBottomLeft:
-        what: mountinghole
-        where:
-          ref: [matrix_middle_bottom]
-          shift: [0,-0.5py - 3]
-      holeBottomRight:
-        what: mountinghole
-        where:
-          ref: [mirror_matrix_middle_bottom]
-          shift: [0,-0.5py - 3]
-      holeMiddleTopLeft:
-        what: mountinghole
-        where:
-          ref: [matrix_index_top]
-          shift: [-0.5px - 3, 11]
-      holeMiddleTopRight:
-        what: mountinghole
-        where:
-          ref: [mirror_matrix_index_top]
-          shift: [-0.5px - 3, 11]
-      holeMiddleBottomLeft:
-        what: mountinghole
-        where:
-          ref: [thumbs_outer_cluster]
-          shift: [-0.5kx - 3, 0.5kx]
-      holeMiddleBottomRight:
-        what: mountinghole
-        where:
-          ref: [mirror_thumbs_outer_cluster]
-          shift: [-0.5kx - 3, 0.5kx]
+        where: /hole/
 cases:
   bottom:
     - name: xlBoard
