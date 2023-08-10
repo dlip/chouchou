@@ -23,7 +23,7 @@ points:
   zones:
     matrix:
       anchor:
-        shift: [100, -100]
+        shift: [50, -80]
       key:
         padding: 1ky
       columns:
@@ -70,13 +70,29 @@ points:
           shift: [0, -2ky]
     mcu:
       anchor:
-        ref: [thumbs_outer_cluster]
-        shift: [40, 3]
-        rotate: -90
+        ref: matrix_index_top
+        shift: [22, -10]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
-  mirror: &mirror
+        rotate: 4
+    holePinkyTop:
+      anchor:
+        ref: [matrix_pinky_top]
+        shift: [0.5px + 2,0.5py + 1]
+    holeMiddleBottom:
+      anchor:
+        ref: [matrix_middle_bottom]
+        shift: [0,-0.5py - 3]
+    holeIndexTop:
+      anchor:
+        ref: [matrix_index_top]
+        shift: [-0.5px, 12]
+    holeThumbs:
+      anchor:
+        ref: [thumbs_outer_cluster]
+        shift: [-0.5kx - 3, 0.5kx]
+  mirror: &mirrorz
     ref: matrix_index_top
     distance: 80
 outlines:
@@ -148,8 +164,8 @@ outlines:
         - ref: mirror_thumbs_outer_cluster
           shift: [2.75px,-0.5py]
   board:
-    - name: board_left
-    - name: board_right
+    - board_left
+    - board_right
   _mcu:
     - what: rectangle
       where: /mcu/
@@ -158,69 +174,20 @@ outlines:
     - what: outline
       name: board
       expand: wallThickness
-  combo:
-    - board
-    - ^keys
-    - ^_mcu
-  case:
-    - name: xlBoard
-    - operation: subtract
-      name: board
-    - operation: add
-      name: keys
   mounting:
-    holeTopLeft:
+    - what: circle
+      where: /hole/
       radius: screwRadius
-      what: circle
-      where:
-        ref: [matrix_pinky_top]
-        shift: [0.5px + 3,0.5py + 3]
-    holeTopRight:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [mirror_matrix_pinky_top]
-        shift: [0.5px + 3,0.5py + 3]
-    holeBottomLeft:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [matrix_middle_bottom]
-        shift: [0,-0.5py - 3]
-    holeBottomRight:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [mirror_matrix_middle_bottom]
-        shift: [0,-0.5py - 3]
-    holeMiddleTopLeft:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [matrix_index_top]
-        shift: [-0.5px - 3, 11]
-    holeMiddleTopRight:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [mirror_matrix_index_top]
-        shift: [-0.5px - 3, 11]
-    holeMiddleBottomLeft:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [thumbs_outer_cluster]
-        shift: [-0.5kx - 3, 0.5kx]
-    holeMiddleBottomRight:
-      radius: screwRadius
-      what: circle
-      where:
-        ref: [mirror_thumbs_outer_cluster]
-        shift: [-0.5kx - 3, 0.5kx]
   standoff:
     - what: outline
       name: mounting
       expand: standoffThickness
+  combo:
+    - xlBoard
+    - ^board
+    - ^keys
+    - ^_mcu
+    - ^mounting
 pcbs:
   chouchou:
     outlines:
@@ -255,17 +222,17 @@ pcbs:
           P5V: P5V
           GND: GND
           P3V3: P3V3
-          GP29: matrix_index_top
-          GP28: matrix_middle_top
-          GP27: matrix_ring_top
-          GP26: matrix_pinky_top
-          GP15: matrix_index_bottom
-          GP14: matrix_middle_bottom
-          GP13: matrix_ring_bottom
-          GP12: matrix_pinky_bottom
-          GP11: thumbs_inner_cluster
-          GP10: thumbs_outer_cluster
-          GP9: GP9
+          GP29: GP29
+          GP28: matrix_index_top
+          GP27: matrix_middle_top
+          GP26: matrix_ring_top
+          GP15: matrix_pinky_top
+          GP14: matrix_index_bottom
+          GP13: matrix_middle_bottom
+          GP12: matrix_ring_bottom
+          GP11: matrix_pinky_bottom
+          GP10: thumbs_inner_cluster
+          GP9: thumbs_outer_cluster
           GP8: GP8
           GP7: GP7
           GP6: GP6
@@ -279,9 +246,8 @@ pcbs:
         what: rp2040zero
         where: mirror_mcu
         adjust:
-          shift: [rp2040zero_x / 2, -rp2040zero_y / 2]
+          shift: [rp2040zero_x / 2 + 2.5, -rp2040zero_y / 2]
         params:
-          reverse: true
           P5V: rP5V
           GND: rGND
           P3V3: rP3V3
@@ -295,16 +261,16 @@ pcbs:
           GP12: rGP12
           GP11: rGP11
           GP10: rGP10
-          GP9: mirror_thumbs_outer_cluster
-          GP8: mirror_thumbs_inner_cluster
-          GP7: mirror_matrix_pinky_bottom
-          GP6: mirror_matrix_ring_bottom
-          GP5: mirror_matrix_middle_bottom
-          GP4: mirror_matrix_index_bottom
-          GP3: mirror_matrix_pinky_top
-          GP2: mirror_matrix_ring_top
-          GP1: mirror_matrix_middle_top
-          GP0: mirror_matrix_index_top
+          GP9: rGP9
+          GP8: rGP8
+          GP7: rGP7
+          GP6: rGP6
+          GP5: rGP5
+          GP4: rGP4
+          GP3: rGP3
+          GP2: rGP2
+          GP1: rGP1
+          GP0: rGP0
       holeTopLeft:
         what: mountinghole
         where:
