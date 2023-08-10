@@ -16,11 +16,6 @@ units:
   pcbThickness: 1.6
   baseThickness: 3
   wallThickness: 3
-  # Footprints
-  rp2040zero_x: 18
-  rp2040zero_y: 23.5
-  jumper_x: 1
-  jumper_y: 2
 points:
   zones:
     matrix:
@@ -35,6 +30,8 @@ points:
           rows:
             top.mcuLeft_pin: GP26
             bottom.mcuLeft_pin: GP12
+            top.mirror.mcuRight_pin: rGP26
+            bottom.mirror.mcuRight_pin: rGP12
         ring:
           key:
             stagger: 4
@@ -43,6 +40,8 @@ points:
           rows:
             top.mcuLeft_pin: GP27
             bottom.mcuLeft_pin: GP13
+            top.mirror.mcuRight_pin: rGP27
+            bottom.mirror.mcuRight_pin: rGP13
         middle:
           key:
             stagger: 5
@@ -51,6 +50,8 @@ points:
           rows:
             top.mcuLeft_pin: GP28
             bottom.mcuLeft_pin: GP14
+            top.mirror.mcuRight_pin: rGP28
+            bottom.mirror.mcuRight_pin: rGP14
         index:
           key:
             stagger: -8
@@ -59,6 +60,8 @@ points:
           rows:
             top.mcuLeft_pin: GP29
             bottom.mcuLeft_pin: GP15
+            top.mirror.mcuRight_pin: rGP29
+            bottom.mirror.mcuRight_pin: rGP15
       rows:
         bottom:
         top:
@@ -76,29 +79,19 @@ points:
             splay: 4
             rotate: 90
             mcuLeft_pin: GP11
+            mirror.mcuRight_pin: rGP11
         outer:
           key:
             width: 1.5kx
             rotate: 90
             mcuLeft_pin: GP10
+            mirror.mcuRight_pin: rGP10
       rows:
         cluster:
           shift: [0, -2ky]
-    mcu:
-      anchor:
-        ref: [thumbs_outer_cluster]
-        shift: [40, 3]
-        rotate: -90
-      key:
-        width: rp2040zero_x
-        height: rp2040zero_y
-    jumper:
-      anchor:
-        ref: [mcu]
-        shift: [7, 6]
-      key:
-        width: jumper_x
-        height: jumper_y
+  mirror: &mirror
+    ref: matrix_index_top
+    distance: 80
 outlines:
   raw:
     - what: rectangle
@@ -106,12 +99,21 @@ outlines:
       size: [px, py]
   keys:
     - what: rectangle
-      where: /^matrix/
+      where: true
       size: [kx-0.5,ky-0.5]
     - what: rectangle
-      where: /^thumb/
+      where: thumbs_inner_cluster
       size: [1.5kx,ky-0.5]
-  board:
+    - what: rectangle
+      where: thumbs_outer_cluster
+      size: [1.5kx,ky-0.5]
+    - what: rectangle
+      where: mirror_thumbs_inner_cluster
+      size: [1.5kx,ky-0.5]
+    - what: rectangle
+      where: mirror_thumbs_outer_cluster
+      size: [1.5kx,ky-0.5]
+  board_left:
     - what: polygon
       operation: stack
       fillet: 2
@@ -138,23 +140,46 @@ outlines:
           shift: [1.2px,0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
-  _mcu:
-    - what: rectangle
-      where: mcu
-      size: [rp2040zero_x, rp2040zero_y]
-  _jumper:
-    - what: rectangle
-      where: jumper
-      size: [jumper_x, jumper_y]
+  board_right:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [1.2px,0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [0.75px,0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.75px,0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [0.75px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [2.75px,-0.5py]
+  board:
+    - name: board_left
+    - name: board_right
   xlBoard:
     - what: outline
       name: board
       expand: wallThickness
   combo:
-    - board
-    - ^keys
-    - ^_mcu
-    - ^_jumper
+    - name: board
+    - operation: subtract
+      name: keys
   case:
     - name: xlBoard
     - operation: subtract
@@ -168,11 +193,23 @@ outlines:
       where:
         ref: [matrix_pinky_top]
         shift: [0.5px + 3,0.5py + 3]
+    holeTopRight:
+      radius: screwRadius
+      what: circle
+      where:
+        ref: [mirror_matrix_pinky_top]
+        shift: [0.5px + 3,0.5py + 3]
     holeBottomLeft:
       radius: screwRadius
       what: circle
       where:
         ref: [matrix_middle_bottom]
+        shift: [0,-0.5py - 3]
+    holeBottomRight:
+      radius: screwRadius
+      what: circle
+      where:
+        ref: [mirror_matrix_middle_bottom]
         shift: [0,-0.5py - 3]
     holeMiddleTopLeft:
       radius: screwRadius
@@ -180,11 +217,23 @@ outlines:
       where:
         ref: [matrix_index_top]
         shift: [-0.5px - 3, 11]
+    holeMiddleTopRight:
+      radius: screwRadius
+      what: circle
+      where:
+        ref: [mirror_matrix_index_top]
+        shift: [-0.5px - 3, 11]
     holeMiddleBottomLeft:
       radius: screwRadius
       what: circle
       where:
         ref: [thumbs_outer_cluster]
+        shift: [-0.5kx - 3, 0.5kx]
+    holeMiddleBottomRight:
+      radius: screwRadius
+      what: circle
+      where:
+        ref: [mirror_thumbs_outer_cluster]
         shift: [-0.5kx - 3, 0.5kx]
   standoff:
     - what: outline
@@ -197,15 +246,6 @@ pcbs:
         outline:
           board
     footprints:
-      jumper:
-        what: jumper
-        where: jumper
-        adjust:
-          rotate: 90
-        params:
-          designator: right_indicator
-          from: GP3
-          to: GND
       chocHotswapLeft:
         what: choc
         where: /^(thumb|matrix)/
@@ -223,32 +263,96 @@ pcbs:
           keycaps: true
           from: "{{mcuLeft_pin}}"
           to: GND
-      mcu:
-        what: rp2040zero
-        where: mcu
-        adjust:
-          shift: [-rp2040zero_x / 2, -rp2040zero_y / 2]
+      chocHotswapRight:
+        what: choc
+        where: /^mirror/
         params:
-          GP1: GND
+          keycaps: true
+          hotswap: true
+          from: "{{mcuRight_pin}}"
+          to: rGND
+      chocRight:
+        what: choc
+        where: /^mirror/
+        adjust:
+          rotate: 180
+        params:
+          keycaps: true
+          from: "{{mcuRight_pin}}"
+          to: rGND
+      mcuLeft:
+        what: rp2040zero
+        where:
+          ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+          shift: [-28,-22]
+      mcuRight:
+        what: rp2040zero
+        where:
+          ref.aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+          shift: [8,-22]
+        params:
+          P5V: rP5V
+          GND: rGND
+          P3V3: rP3V3
+          GP29: rGP29
+          GP28: rGP28
+          GP27: rGP27
+          GP26: rGP26
+          GP15: rGP15
+          GP14: rGP14
+          GP13: rGP13
+          GP12: rGP12
+          GP11: rGP11
+          GP10: rGP10
+          GP9: rGP9
+          GP8: rGP8
+          GP7: rGP7
+          GP6: rGP6
+          GP5: rGP5
+          GP4: rGP4
+          GP3: rGP3
+          GP2: rGP2
+          GP1: rGP1
+          GP0: rGP0
       holeTopLeft:
         what: mountinghole
         where:
           ref: [matrix_pinky_top]
+          shift: [0.5px + 3,0.5py + 3]
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_pinky_top]
           shift: [0.5px + 3,0.5py + 3]
       holeBottomLeft:
         what: mountinghole
         where:
           ref: [matrix_middle_bottom]
           shift: [0,-0.5py - 3]
+      holeBottomRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_middle_bottom]
+          shift: [0,-0.5py - 3]
       holeMiddleTopLeft:
         what: mountinghole
         where:
           ref: [matrix_index_top]
           shift: [-0.5px - 3, 11]
+      holeMiddleTopRight:
+        what: mountinghole
+        where:
+          ref: [mirror_matrix_index_top]
+          shift: [-0.5px - 3, 11]
       holeMiddleBottomLeft:
         what: mountinghole
         where:
           ref: [thumbs_outer_cluster]
+          shift: [-0.5kx - 3, 0.5kx]
+      holeMiddleBottomRight:
+        what: mountinghole
+        where:
+          ref: [mirror_thumbs_outer_cluster]
           shift: [-0.5kx - 3, 0.5kx]
 cases:
   bottom:
