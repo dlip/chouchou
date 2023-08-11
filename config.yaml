@@ -25,7 +25,7 @@ points:
   zones:
     matrix:
       anchor:
-        shift: [50, -80]
+        shift: [35, -80]
       key:
         padding: 1ky
       columns:
@@ -34,19 +34,19 @@ points:
             splay: 8
         ring:
           key:
-            stagger: 4
-            spread: 23
-            splay: -4
+            stagger: 16
+            spread: 20
+            splay: -6
         middle:
           key:
-            stagger: 5
-            spread: 20
-            splay: -4
+            stagger: 11
+            spread: 19
+            splay: -2
         index:
           key:
-            stagger: -8
-            spread: 20
-            splay: -4
+            stagger: -12
+            spread: 18.5
+            splay: -2
       rows:
         bottom:
         top:
@@ -56,12 +56,12 @@ points:
         spread: 1kx
       anchor:
         ref: matrix_index_bottom
-        shift: [20, 9.5]
+        shift: [21, 5]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: 0
+            splay: -6
             rotate: 90
         outer:
           key:
@@ -73,11 +73,11 @@ points:
     mcu:
       anchor:
         ref: matrix_index_top
-        shift: [21, -10]
+        shift: [22, -13.5]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
-        rotate: 0
+        rotate: 2
     trrs:
       anchor:
         ref: thumbs_outer_cluster
@@ -135,7 +135,7 @@ outlines:
       size: [1.5kx+6,ky+4]
     - what: rectangle
       where: /mcu/
-      size: [rp2040zero_x+10, rp2040zero_y+5]
+      size: [rp2040zero_x+7, rp2040zero_y+5]
     - what: rectangle
       where: /trrs/
       size: [trrs_x+8, trrs_y+5]
@@ -145,7 +145,7 @@ outlines:
       where: /trrs/
       size: [trrs_x+8, trrs_y+5]
       adjust:
-          shift: [-17.5, -0]
+          shift: [-18.5, -0]
   _mcu:
     - what: rectangle
       where: /mcu/
@@ -254,7 +254,7 @@ pcbs:
           P5V: rP5V
           GND: rGND
           P3V3: rP3V3
-          GP29: rGP29
+          GP29: rGND
           GP28: rGP28
           GP27: rGP27
           GP26: rGP26
@@ -334,4 +334,4 @@ cases:
       operation: add
     - what: case
       name: wall
-      operation: add
+      operation: add 
