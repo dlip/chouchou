@@ -19,6 +19,8 @@ units:
   # Footprints
   rp2040zero_x: 18
   rp2040zero_y: 23.5
+  trrs_x: 14
+  trrs_y: 6
 points:
   zones:
     matrix:
@@ -54,12 +56,12 @@ points:
         spread: 1kx
       anchor:
         ref: matrix_index_bottom
-        shift: [8, 0]
+        shift: [20, 9.5]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: 4
+            splay: 0
             rotate: 90
         outer:
           key:
@@ -71,11 +73,19 @@ points:
     mcu:
       anchor:
         ref: matrix_index_top
-        shift: [22, -10]
+        shift: [21, -10]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
-        rotate: 4
+        rotate: 0
+    trrs:
+      anchor:
+        ref: thumbs_outer_cluster
+        shift: [18, -1]
+      key:
+        width: trrs_x
+        height: trrs_y
+        rotate: -90
     holePinkyTop:
       anchor:
         ref: [matrix_pinky_top]
@@ -94,7 +104,7 @@ points:
         shift: [-0.5kx - 3, 0.5kx]
   mirror: &mirror
     ref: matrix_index_top
-    distance: 80
+    distance: 110
 outlines:
   raw:
     - what: rectangle
@@ -107,65 +117,43 @@ outlines:
     - what: rectangle
       where: /thumb/
       size: [1.5kx,ky-0.5]
-  board_left:
+  lines:
     - what: polygon
       operation: stack
-      fillet: 2
+      fillet: 0
       points:
-        - ref: matrix_pinky_top
-          shift: [-0.5px,0.5py]
-        - ref: matrix_middle_top
-          shift: [-0.5px,0.5py]
-        - ref: matrix_middle_top
-          shift: [0.5px,0.5py]
-        - ref: thumbs_outer_cluster
-          shift: [2.75px,-0.5py]
-        - ref: thumbs_outer_cluster
-          shift: [0.75px,-0.5py]
-        - ref: thumbs_outer_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [-0.75px,0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [1.2px,0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5px,-0.5py]
-  board_right:
-    - what: polygon
-      operation: stack
-      fillet: 2
-      points:
-        - ref: mirror_matrix_middle_top
-          shift: [0.5px,0.5py]
-        - ref: mirror_matrix_middle_top
-          shift: [-0.5px,0.5py]
-        - ref: mirror_matrix_pinky_top
-          shift: [-0.5px,0.5py]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.5px,-0.5py]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [1.2px,0.5py]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [0.75px,0.5py]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [-0.75px,0.5py]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [-0.75px,-0.5py]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [0.75px,-0.5py]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [2.75px,-0.5py]
+      - ref: matrix_pinky_top
+      - ref: matrix_middle_top
+      - ref: thumbs_outer_cluster
+      - ref: thumbs_inner_cluster
   board:
-    - board_left
-    - board_right
+    - what: rectangle
+      where: /matrix/
+      size: [kx+5,ky+5]
+    - what: rectangle
+      where: /thumb/
+      size: [1.5kx+6,ky+4]
+    - what: rectangle
+      where: /mcu/
+      size: [rp2040zero_x+5, rp2040zero_y+5]
+    - what: rectangle
+      where: /trrs/
+      size: [trrs_x+8, trrs_y+5]
+      adjust:
+          shift: [-1.5, -0]
+    - what: rectangle
+      where: /trrs/
+      size: [trrs_x+8, trrs_y+5]
+      adjust:
+          shift: [-17.5, -0]
   _mcu:
     - what: rectangle
       where: /mcu/
       size: [rp2040zero_x, rp2040zero_y]
+  _trrs:
+    - what: rectangle
+      where: /trrs/
+      size: [trrs_x, trrs_y] 
   xlBoard:
     - what: outline
       name: board
@@ -183,7 +171,9 @@ outlines:
     - ^board
     - ^keys
     - ^_mcu
-    - ^mounting
+    - ^_trrs
+    #- ^standoff
+    #- ^mounting
 pcbs:
   chouchou:
     outlines:
@@ -232,8 +222,8 @@ pcbs:
           GP8: GP8
           GP7: GP7
           GP6: GP6
-          GP5: GP5
-          GP4: GP4
+          GP5: RX
+          GP4: TX
           GP3: GP3
           GP2: GP2
           GP1: GP1
@@ -253,8 +243,8 @@ pcbs:
           GP26: rGP26
           GP15: rGP15
           GP14: rGP14
-          GP13: rGP13
-          GP12: rGP12
+          GP13: rRX
+          GP12: rTX
           GP11: rGP11
           GP10: rGP10
           GP9: mirror_thumbs_outer_cluster
@@ -267,9 +257,31 @@ pcbs:
           GP2: mirror_matrix_ring_top
           GP1: mirror_matrix_middle_top
           GP0: mirror_matrix_index_top
-      holes:
-        what: mountinghole
-        where: /hole/
+      trrsLeft:
+        what: trrs
+        where: trrs
+        adjust:
+          rotate: -90
+          shift: [trrs_x / 2, -trrs_y / 2 + 2.5]
+        params:
+          A: GND
+          B: P3V3
+          C: RX
+          D: TX
+      trrsRight:
+        what: trrs
+        where: mirror_trrs
+        adjust:
+          rotate: -90
+          shift: [trrs_x / 2, 4]
+        params:
+          A: rGND
+          B: P3V3
+          C: rRX
+          D: rTX
+      #holes:
+      #  what: mountinghole
+      #  where: /hole/
 cases:
   bottom:
     - name: xlBoard
