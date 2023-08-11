@@ -135,7 +135,7 @@ outlines:
       size: [1.5kx+6,ky+4]
     - what: rectangle
       where: /mcu/
-      size: [rp2040zero_x+5, rp2040zero_y+5]
+      size: [rp2040zero_x+10, rp2040zero_y+5]
     - what: rectangle
       where: /trrs/
       size: [trrs_x+8, trrs_y+5]
@@ -181,23 +181,40 @@ pcbs:
         outline:
           board
     footprints:
-      chocHotswap:
+      chocHotswapLeft:
         what: choc
-        where: /(thumb|matrix)/
+        where: /^(thumb|matrix)/
         params:
           keycaps: true
           hotswap: true
           from: "{{name}}"
           to: GND
-      choc:
+      chocLeft:
         what: choc
-        where: /(thumb|matrix)/
+        where: /^(thumb|matrix)/
         adjust:
           rotate: 180
         params:
           keycaps: true
           from: "{{name}}"
           to: GND
+      chocHotswapRight:
+        what: choc
+        where: /^mirror_(thumb|matrix)/
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{name}}"
+          to: rGND
+      chocRight:
+        what: choc
+        where: /^mirror_(thumb|matrix)/
+        adjust:
+          rotate: 180
+        params:
+          keycaps: true
+          from: "{{name}}"
+          to: rGND
       mcuLeft:
         what: rp2040zero
         where: mcu
@@ -262,7 +279,7 @@ pcbs:
         where: trrs
         adjust:
           rotate: -90
-          shift: [trrs_x / 2, -trrs_y / 2 + 2.5]
+          shift: [trrs_x / 2, -trrs_y / 2 + 2]
         params:
           A: GND
           B: P3V3
@@ -273,10 +290,10 @@ pcbs:
         where: mirror_trrs
         adjust:
           rotate: -90
-          shift: [trrs_x / 2, 4]
+          shift: [trrs_x / 2, 3.5]
         params:
           A: rGND
-          B: P3V3
+          B: rP3V3
           C: rRX
           D: rTX
       #holes:
