@@ -19,8 +19,9 @@ units:
   # Footprints
   rp2040zero_x: 18
   rp2040zero_y: 23.5
-  trrs_x: 14
+  trrs_x: 12
   trrs_y: 6
+  boardPadding: 0
 points:
   zones:
     matrix:
@@ -28,64 +29,55 @@ points:
         shift: [35, -80]
       key:
         padding: 1ky
+        spread: 1kx
       columns:
         pinky:
-          key:
-            splay: 8
         ring:
           key:
-            stagger: 16
-            spread: 20
-            splay: -6
+            stagger: 0.6ky
         middle:
           key:
-            stagger: 11
-            spread: 19
-            splay: -2
+            stagger: 0.33ky
         index:
           key:
-            stagger: -12
-            spread: 18.5
-            splay: -2
+            stagger: -0.33ky
       rows:
         bottom:
         top:
     thumbs:
       key:
-        padding: 1ky
-        spread: 1kx
+        padding: 1kx
+        spread: 1ky
       anchor:
         ref: matrix_index_bottom
-        shift: [21, 5]
+        shift: [0.498kx, -1.68ky]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: -6
+            splay: -12
             rotate: 90
         outer:
           key:
             width: 1.5kx
+            splay: 0
             rotate: 90
       rows:
         cluster:
-          shift: [0, -2ky]
     mcu:
       anchor:
         ref: matrix_index_top
-        shift: [22, -13.5]
+        shift: [1.317kx, -0.5ky]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
-        rotate: 2
     trrs:
       anchor:
-        ref: thumbs_outer_cluster
-        shift: [18, -1]
+        ref: mcu
+        shift: [7, -rp2040zero_x-2]
       key:
         width: trrs_x
         height: trrs_y
-        rotate: -90
     holePinkyTop:
       anchor:
         ref: [matrix_pinky_top]
@@ -129,23 +121,18 @@ outlines:
   board:
     - what: rectangle
       where: /matrix/
-      size: [kx+5,ky+5]
+      size: [kx+boardPadding,ky+boardPadding]
     - what: rectangle
       where: /thumb/
-      size: [1.5kx+6,ky+4]
+      size: [1.5kx+boardPadding,ky+boardPadding]
     - what: rectangle
       where: /mcu/
-      size: [rp2040zero_x+7, rp2040zero_y+5]
+      size: [rp2040zero_x+8, rp2040zero_y+5]
     - what: rectangle
-      where: /trrs/
-      size: [trrs_x+8, trrs_y+5]
+      where: /mcu/
+      size: [rp2040zero_x+16, rp2040zero_y+20]
       adjust:
-          shift: [-1.5, -0]
-    - what: rectangle
-      where: /trrs/
-      size: [trrs_x+8, trrs_y+5]
-      adjust:
-          shift: [-18.5, -0]
+        shift: [-4,-7.5]
   _mcu:
     - what: rectangle
       where: /mcu/
