@@ -64,6 +64,179 @@ ot = 1 << 9
 keymap = {
     t: KC.T,
     t | e: KC.H,
+    it: KC.BSPC,
+    ot: KC.SPC,
+    r: KC.R,
+    r | ot: KC.LSFT(KC.R),
+    r | it: KC.GT,
+    r | ot | it: KC.PRINT_SCREEN,
+    s: KC.S,
+    s | ot: KC.LSFT(KC.S),
+    s | it: KC.RCBR,
+    s | ot | it: KC.BRIGHTNESS_UP,
+    n: KC.N,
+    n | ot: KC.LSFT(KC.N),
+    n | it: KC.RBRC,
+    n | ot | it: KC.BRIGHTNESS_DOWN,
+    i: KC.I,
+    i | ot: KC.LSFT(KC.I),
+    i | it: KC.RPRN,
+    i | ot | it: KC.MEDIA_PLAY_PAUSE,
+    a: KC.A,
+    a | ot: KC.LSFT(KC.A),
+    a | it: KC.LT,
+    a | ot | it: KC.MEDIA_NEXT_TRACK,
+    o: KC.O,
+    o | ot: KC.LSFT(KC.O),
+    o | it: KC.LCBR,
+    o | ot | it: KC.KB_VOLUME_UP,
+    t: KC.T,
+    t | ot: KC.LSFT(KC.T),
+    t | it: KC.LBRC,
+    t | ot | it: KC.KB_VOLUME_DOWN,
+    e: KC.E,
+    e | ot: KC.LSFT(KC.E),
+    e | it: KC.LPRN,
+    e | ot | it: KC.MEDIA_PREV_TRACK,
+    e | o: KC.C,
+    e | o | ot: KC.LSFT(KC.C),
+    e | o | it: KC.N1,
+    e | o | ot | it: KC.F1,
+    t | o: KC.U,
+    t | o | ot: KC.LSFT(KC.U),
+    t | o | it: KC.N2,
+    t | o | ot | it: KC.F2,
+    t | a: KC.Q,
+    t | a | ot: KC.LSFT(KC.Q),
+    t | a | it: KC.N3,
+    t | a | ot | it: KC.F3,
+    o | a: KC.L,
+    o | a | ot: KC.LSFT(KC.L),
+    o | a | it: KC.N4,
+    o | a | ot | it: KC.F4,
+    i | n: KC.Y,
+    i | n | ot: KC.LSFT(KC.Y),
+    i | n | it: KC.N5,
+    i | n | ot | it: KC.F5,
+    i | s: KC.F,
+    i | s | ot: KC.LSFT(KC.F),
+    i | s | it: KC.N6,
+    i | s | ot | it: KC.F6,
+    n | s: KC.P,
+    n | s | ot: KC.LSFT(KC.P),
+    n | s | it: KC.N7,
+    n | s | ot | it: KC.F7,
+    n | r: KC.Z,
+    n | r | ot: KC.LSFT(KC.Z),
+    n | r | it: KC.N8,
+    n | r | ot | it: KC.F8,
+    s | r: KC.B,
+    s | r | ot: KC.LSFT(KC.B),
+    s | r | it: KC.N9,
+    s | r | ot | it: KC.F9,
+    e | t: KC.H,
+    e | t | ot: KC.LSFT(KC.H),
+    e | t | it: KC.N0,
+    e | t | ot | it: KC.F10,
+    e | a: KC.D,
+    e | a | ot: KC.LSFT(KC.D),
+    e | a | it: KC.AT,
+    e | a | ot | it: KC.F11,
+    i | r: KC.G,
+    i | r | ot: KC.LSFT(KC.G),
+    i | r | it: KC.HASH,
+    i | r | ot | it: KC.F12,
+    t | r: KC.X,
+    t | r | ot: KC.LSFT(KC.X),
+    t | r | it: KC.CIRC,
+    t | r | ot | it: KC.LCTL(KC.X),
+    i | o: KC.K,
+    i | o | ot: KC.LSFT(KC.K),
+    i | o | it: KC.PLUS,
+    i | o | ot | it: KC.LCTL(KC.C),
+    e | s: KC.V,
+    e | s | ot: KC.LSFT(KC.V),
+    e | s | it: KC.ASTR,
+    e | s | ot | it: KC.LCTL(KC.V),
+    n | a: KC.J,
+    n | a | ot: KC.LSFT(KC.J),
+    n | a | it: KC.EQL,
+    n | a | ot | it: KC.LCTL(KC.Z),
+    e | r: KC.M,
+    e | r | ot: KC.LSFT(KC.M),
+    e | r | it: KC.DLR,
+    # e | r | ot | it: KC.NO,
+    i | a: KC.W,
+    i | a | ot: KC.LSFT(KC.W),
+    i | a | it: KC.AMPR,
+    # i | a | ot | it: KC.NO,
+    t | s: KC.SLSH,
+    t | s | ot: KC.BSLS,
+    t | s | it: KC.PIPE,
+    # t | s | ot | it: KC.NO,
+    n | o: KC.MINS,
+    n | o | ot: KC.UNDS,
+    n | o | it: KC.PERC,
+    # n | o | ot | it: KC.NO,
+    i | t: KC.QUES,
+    i | t | ot: KC.EXLM,
+    # i | t | it: KC.NO,
+    # i | t | ot | it: KC.NO,
+    e | n: KC.COMM,
+    e | n | ot: KC.DOT,
+    e | n | it: KC.TILD,
+    # e | n | ot | it: KC.NO,
+    o | r: KC.SCLN,
+    t | o | a: KC.SCLN,
+    o | r | ot: KC.COLN,
+    t | o | a | ot: KC.COLN,
+    # o | r | it: KC.NO,
+    # t | o | a | it: KC.NO,
+    # o | r | ot | it: KC.NO,
+    # t | o | a | ot | it: KC.NO,
+    s | a: KC.QUOT,
+    n | s | r: KC.QUOT,
+    s | a | ot: KC.DQT,
+    n | s | r | ot: KC.DQT,
+    s | a | it: KC.GRV,
+    n | s | r | it: KC.GRV,
+    # s | a | ot | it: KC.NO,
+    # n | s | r | ot | it: KC.NO,
+    i | n | s: KC.TAB,
+    i | n | s | ot: KC.DEL,
+    i | n | s | it: KC.INS,
+    # i | n | s | ot | it: KC.NO,
+    e | t | o: KC.ENTER,
+    e | t | o | ot: KC.ESC,
+    e | t | o | it: KC.RALT,
+    # e | t | o | ot | it: KC.NO,
+    a | r: KC.LGUI,
+    a | r | ot: KC.RIGHT,
+    a | r | it: KC.PGUP,
+    a | r | ot | it: KC.LAYER3,
+    o | s: KC.LALT,
+    o | s | ot: KC.UP,
+    o | s | it: KC.HOME,
+    o | s | ot | it: KC.LAYER2,
+    t | n: KC.LCTL,
+    t | n | ot: KC.DOWN,
+    t | n | it: KC.END,
+    t | n | ot | it: KC.LAYER1,
+    e | i: KC.LSFT,
+    e | i | ot: KC.LEFT,
+    e | i | it: KC.PGDN,
+    e | i | ot | it: KC.LAYER0,
+    r | a | s | o: KC.MOD_GA,
+    r | a | n | t: KC.MOD_GC,
+    r | a | i | e: KC.MOD_GS,
+    s | o | n | t: KC.MOD_AC,
+    s | o | i | e: KC.MOD_AS,
+    n | t | i | e: KC.MOD_CS,
+    r | a | s | o | n | t: KC.MOD_GAC,
+    r | a | s | o | i | e: KC.MOD_GAS,
+    r | a | n | t | i | e: KC.MOD_GCS,
+    s | o | n | t | i | e: KC.MOD_ACS,
+    r | a | s | o | n | t | i | e: KC.MOD_GACS,
 }
 
 class KeyPress:
@@ -99,16 +272,12 @@ class Taipo(Module):
         if hasattr(key.meta, 'taipo_code'):
             side = 1 if key.meta.taipo_code / 10 >= 1 else 0
             code = key.meta.taipo_code
-            debug('activate', key.meta.taipo_code)
-            debug('code', self.determine_key(key.meta.taipo_code))
             if is_pressed:
                 self.state[side].combo |= 1 << (key.meta.taipo_code % 10)
-                debug(state.combo)
             else:
                 self.state[side].key.keycode = self.determine_key(self.state[side].combo)
                 self.handle_key(keyboard, self.state[side].key)
                 self.clear_state(side)
-               
         else:
             return key
 
@@ -119,353 +288,11 @@ class Taipo(Module):
         keyboard.tap_key(key.keycode)
         
     def determine_key(self, val):
-        debug('val', val)
         if val in keymap:
             return keymap[val]
         else:
             return KC.NO
-        # match val:
-        #     case it:
-        #         return KC_BSPC;
-        #     case ot:
-        #         return KC_SPC;
-        #     case r:
-        #         return KC_R;
-        #     case r | ot:
-        #         return S(KC_R);
-        #     case r | it:
-        #         return KC_GT;
-        #     case r | ot | it:
-        #         return KC_PRINT_SCREEN;
-        #     case s:
-        #         return KC_S;
-        #     case s | ot:
-        #         return S(KC_S);
-        #     case s | it:
-        #         return KC_RCBR;
-        #     case s | ot | it:
-        #         return KC_BRIGHTNESS_UP;
-        #     case n:
-        #         return KC_N;
-        #     case n | ot:
-        #         return S(KC_N);
-        #     case n | it:
-        #         return KC_RBRC;
-        #     case n | ot | it:
-        #         return KC_BRIGHTNESS_DOWN;
-        #     case i:
-        #         return KC_I;
-        #     case i | ot:
-        #         return S(KC_I);
-        #     case i | it:
-        #         return KC_RPRN;
-        #     case i | ot | it:
-        #         return KC_MEDIA_PLAY_PAUSE;
-        #     case a:
-        #         return KC_A;
-        #     case a | ot:
-        #         return S(KC_A);
-        #     case a | it:
-        #         return KC_LT;
-        #     case a | ot | it:
-        #         return KC_MEDIA_NEXT_TRACK;
-        #     case o:
-        #         return KC_O;
-        #     case o | ot:
-        #         return S(KC_O);
-        #     case o | it:
-        #         return KC_LCBR;
-        #     case o | ot | it:
-        #         return KC_KB_VOLUME_UP;
-        #     case t:
-        #         return KC_T;
-        #     case t | ot:
-        #         return S(KC_T);
-        #     case t | it:
-        #         return KC_LBRC;
-        #     case t | ot | it:
-        #         return KC_KB_VOLUME_DOWN;
-        #     case e:
-        #         return KC_E;
-        #     case e | ot:
-        #         return S(KC_E);
-        #     case e | it:
-        #         return KC_LPRN;
-        #     case e | ot | it:
-        #         return KC_MEDIA_PREV_TRACK;
-        #     case e | o:
-        #         return KC_C;
-        #     case e | o | ot:
-        #         return S(KC_C);
-        #     case e | o | it:
-        #         return KC_1;
-        #     case e | o | ot | it:
-        #         return KC_F1;
-        #     case t | o:
-        #         return KC_U;
-        #     case t | o | ot:
-        #         return S(KC_U);
-        #     case t | o | it:
-        #         return KC_2;
-        #     case t | o | ot | it:
-        #         return KC_F2;
-        #     case t | a:
-        #         return KC_Q;
-        #     case t | a | ot:
-        #         return S(KC_Q);
-        #     case t | a | it:
-        #         return KC_3;
-        #     case t | a | ot | it:
-        #         return KC_F3;
-        #     case o | a:
-        #         return KC_L;
-        #     case o | a | ot:
-        #         return S(KC_L);
-        #     case o | a | it:
-        #         return KC_4;
-        #     case o | a | ot | it:
-        #         return KC_F4;
-        #     case i | n:
-        #         return KC_Y;
-        #     case i | n | ot:
-        #         return S(KC_Y);
-        #     case i | n | it:
-        #         return KC_5;
-        #     case i | n | ot | it:
-        #         return KC_F5;
-        #     case i | s:
-        #         return KC_F;
-        #     case i | s | ot:
-        #         return S(KC_F);
-        #     case i | s | it:
-        #         return KC_6;
-        #     case i | s | ot | it:
-        #         return KC_F6;
-        #     case n | s:
-        #         return KC_P;
-        #     case n | s | ot:
-        #         return S(KC_P);
-        #     case n | s | it:
-        #         return KC_7;
-        #     case n | s | ot | it:
-        #         return KC_F7;
-        #     case n | r:
-        #         return KC_Z;
-        #     case n | r | ot:
-        #         return S(KC_Z);
-        #     case n | r | it:
-        #         return KC_8;
-        #     case n | r | ot | it:
-        #         return KC_F8;
-        #     case s | r:
-        #         return KC_B;
-        #     case s | r | ot:
-        #         return S(KC_B);
-        #     case s | r | it:
-        #         return KC_9;
-        #     case s | r | ot | it:
-        #         return KC_F9;
-        #     case e | t:
-        #         return KC_H;
-        #     case e | t | ot:
-        #         return S(KC_H);
-        #     case e | t | it:
-        #         return KC_0;
-        #     case e | t | ot | it:
-        #         return KC_F10;
-        #     case e | a:
-        #         return KC_D;
-        #     case e | a | ot:
-        #         return S(KC_D);
-        #     case e | a | it:
-        #         return KC_AT;
-        #     case e | a | ot | it:
-        #         return KC_F11;
-        #     case i | r:
-        #         return KC_G;
-        #     case i | r | ot:
-        #         return S(KC_G);
-        #     case i | r | it:
-        #         return KC_HASH;
-        #     case i | r | ot | it:
-        #         return KC_F12;
-        #     case t | r:
-        #         return KC_X;
-        #     case t | r | ot:
-        #         return S(KC_X);
-        #     case t | r | it:
-        #         return KC_CIRC;
-        #     case t | r | ot | it:
-        #         return C(KC_X);
-        #     case i | o:
-        #         return KC_K;
-        #     case i | o | ot:
-        #         return S(KC_K);
-        #     case i | o | it:
-        #         return KC_PLUS;
-        #     case i | o | ot | it:
-        #         return C(KC_C);
-        #     case e | s:
-        #         return KC_V;
-        #     case e | s | ot:
-        #         return S(KC_V);
-        #     case e | s | it:
-        #         return KC_ASTR;
-        #     case e | s | ot | it:
-        #         return C(KC_V);
-        #     case n | a:
-        #         return KC_J;
-        #     case n | a | ot:
-        #         return S(KC_J);
-        #     case n | a | it:
-        #         return KC_EQL;
-        #     case n | a | ot | it:
-        #         return C(KC_Z);
-        #     case e | r:
-        #         return KC_M;
-        #     case e | r | ot:
-        #         return S(KC_M);
-        #     case e | r | it:
-        #         return KC_DLR;
-        #     // case e | r | ot | it:
-        #     //     return KC_NO;
-        #     case i | a:
-        #         return KC_W;
-        #     case i | a | ot:
-        #         return S(KC_W);
-        #     case i | a | it:
-        #         return KC_AMPR;
-        #     // case i | a | ot | it:
-        #     //     return KC_NO;
-        #     case t | s:
-        #         return KC_SLSH;
-        #     case t | s | ot:
-        #         return KC_BSLS;
-        #     case t | s | it:
-        #         return KC_PIPE;
-        #     // case t | s | ot | it:
-        #     //     return KC_NO;
-        #     case n | o:
-        #         return KC_MINS;
-        #     case n | o | ot:
-        #         return KC_UNDS;
-        #     case n | o | it:
-        #         return KC_PERC;
-        #     // case n | o | ot | it:
-        #     //     return KC_NO;
-        #     case i | t:
-        #         return KC_QUES;
-        #     case i | t | ot:
-        #         return KC_EXLM;
-        #     // case i | t | it:
-        #     //     return KC_NO;
-        #     // case i | t | ot | it:
-        #     //     return KC_NO;
-        #     case e | n:
-        #         return KC_COMM;
-        #     case e | n | ot:
-        #         return KC_DOT;
-        #     case e | n | it:
-        #         return KC_TILD;
-        #     // case e | n | ot | it:
-        #     //     return KC_NO;
-        #     case o | r:
-        #     case t | o | a:
-        #         return KC_SCLN;
-        #     case o | r | ot:
-        #     case t | o | a | ot:
-        #         return KC_COLN;
-        #     // case o | r | it:
-        #     // case t | o | a | it:
-        #     //     return KC_NO;
-        #     // case o | r | ot | it:
-        #     // case t | o | a | ot | it:
-        #     //     return KC_NO;
-        #     case s | a:
-        #     case n | s | r:
-        #         return KC_QUOT;
-        #     case s | a | ot:
-        #     case n | s | r | ot:
-        #         return KC_DQT;
-        #     case s | a | it:
-        #     case n | s | r | it:
-        #         return KC_GRV;
-        #     // case s | a | ot | it:
-        #     // case n | s | r | ot | it:
-        #     //     return KC_NO;
-        #     case i | n | s:
-        #         return KC_TAB;
-        #     case i | n | s | ot:
-        #         return KC_DEL;
-        #     case i | n | s | it:
-        #         return KC_INS;
-        #     // case i | n | s | ot | it:
-        #     //     return KC_NO;
-        #     case e | t | o:
-        #         return KC_ENTER;
-        #     case e | t | o | ot:
-        #         return KC_ESC;
-        #     case e | t | o | it:
-        #         return KC_RALT;
-        #     // case e | t | o | ot | it:
-        #     //     return KC_NO;
-        #     case a | r:
-        #         return KC_LGUI;
-        #     case a | r | ot:
-        #         return KC_RIGHT;
-        #     case a | r | it:
-        #         return KC_PGUP;
-        #     case a | r | ot | it:
-        #         return KC_LAYER3;
-        #     case o | s:
-        #         return KC_LALT;
-        #     case o | s | ot:
-        #         return KC_UP;
-        #     case o | s | it:
-        #         return KC_HOME;
-        #     case o | s | ot | it:
-        #         return KC_LAYER2;
-        #     case t | n:
-        #         return KC_LCTL;
-        #     case t | n | ot:
-        #         return KC_DOWN;
-        #     case t | n | it:
-        #         return KC_END;
-        #     case t | n | ot | it:
-        #         return KC_LAYER1;
-        #     case e | i:
-        #         return KC_LSFT;
-        #     case e | i | ot:
-        #         return KC_LEFT;
-        #     case e | i | it:
-        #         return KC_PGDN;
-        #     case e | i | ot | it:
-        #         return KC_LAYER0;
-        #     case r | a | s | o:
-        #         return KC_MOD_GA;
-        #     case r | a | n | t:
-        #         return KC_MOD_GC;
-        #     case r | a | i | e:
-        #         return KC_MOD_GS;
-        #     case s | o | n | t:
-        #         return KC_MOD_AC;
-        #     case s | o | i | e:
-        #         return KC_MOD_AS;
-        #     case n | t | i | e:
-        #         return KC_MOD_CS;
-        #     case r | a | s | o | n | t:
-        #         return KC_MOD_GAC;
-        #     case r | a | s | o | i | e:
-        #         return KC_MOD_GAS;
-        #     case r | a | n | t | i | e:
-        #         return KC_MOD_GCS;
-        #     case s | o | n | t | i | e:
-        #         return KC_MOD_ACS;
-        #     case r | a | s | o | n | t | i | e:
-        #         return KC_MOD_GACS;
-        # }
-        # return KC_NO;
-
+       
     def before_hid_send(self, keyboard):
         pass
 
