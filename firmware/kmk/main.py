@@ -9,8 +9,8 @@ keyboard = ChouChou()
 
 keyboard.debug_enabled = True
 keyboard.extensions.append(MediaKeys())
-keyboard.modules.append(OneShot())
 keyboard.modules.append(Taipo())
+keyboard.modules.append(OneShot())
 
 keyboard.keymap = [
     [  KC.TP_TLP,    KC.TP_TLR,    KC.TP_TLM,       KC.TP_TLI,          KC.TP_TRI,     KC.TP_TRM,     KC.TP_TRR,     KC.TP_TRP,
