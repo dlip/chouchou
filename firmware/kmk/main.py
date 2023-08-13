@@ -7,7 +7,7 @@ from taipo import Taipo
 
 keyboard = ChouChou()
 
-keyboard.debug_enabled = True
+# keyboard.debug_enabled = True
 keyboard.extensions.append(MediaKeys())
 keyboard.modules.append(Taipo())
 keyboard.modules.append(OneShot())
