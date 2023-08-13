@@ -31,6 +31,9 @@ It uses a cheap RP2040-Zero MCU and requires no diodes since the 20 edge pinouts
   - Taipo Keyboard
   - PC Gamepad
   - Qwerty/WASD Layout
+- [KMK](firmware/kmk)
+  - Taipo Keyboard
+  - Python based with hot reloading so good if you tinker a lot with your layout
 - [GP2040-CE](firmware/gp2040-ce)
   - PC or console gamepad
   - Note: PS5 requires an adapter like the [Wingman FGC](https://shop.brookaccessory.com/en/products/wingman-fgc)
