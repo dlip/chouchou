@@ -9,6 +9,7 @@ from kmk.keys import Key, KC, make_key
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.modules import Module
 from kmk.utils import Debug
+from supervisor import ticks_ms
 
 debug = Debug(__name__)
 
@@ -76,7 +77,8 @@ class TaipoMeta:
         self.taipo_code = code
     
 class Taipo(Module):
-    def __init__(self, sticky_timeout=1000):
+    def __init__(self, tap_timeout=150, sticky_timeout=1000):
+        self.tap_timeout = tap_timeout
         self.sticky_timeout=sticky_timeout
         self.state = [State(), State()]
         for key, code in taipo_keycodes.items():
@@ -264,7 +266,12 @@ class Taipo(Module):
         pass
 
     def before_matrix_scan(self, keyboard):
-        pass
+        for side in [0, 1]:
+            if self.state[side].timer != 0 and ticks_ms() > self.state[side].timer:
+                self.state[side].key.keycode = self.determine_key(self.state[side].combo)
+                self.state[side].key.hold = True
+                self.handle_key(keyboard, side)
+                self.state[side].timer = 0
 
     def after_matrix_scan(self, keyboard):
         pass
@@ -274,18 +281,31 @@ class Taipo(Module):
             side = 1 if key.meta.taipo_code / 10 >= 1 else 0
             code = key.meta.taipo_code
             if is_pressed:
+                if self.state[side].key.keycode != KC.NO:
+                    self.handle_key(keyboard, side)
+                    self.clear_state(side)
+                
                 self.state[side].combo |= 1 << (key.meta.taipo_code % 10)
+                self.state[side].timer = ticks_ms() + self.tap_timeout
             else:
-                self.state[side].key.keycode = self.determine_key(self.state[side].combo)
-                self.handle_key(keyboard, self.state[side].key)
+                if not self.state[side].key.hold:
+                    self.state[side].key.keycode = self.determine_key(self.state[side].combo)
+                self.handle_key(keyboard, side)
                 self.clear_state(side)
         else:
             return key
 
     def clear_state(self, side):
-        self.state[side] = State()
+        # why does this not work?
+        # self.state[side] = State()
+        self.state[side].combo = 0
+        self.state[side].timer = 0
+        self.state[side].key.keycode = KC.NO
+        self.state[side].key.hold = False
+        self.state[side].key.hold_handled = False
         
-    def handle_key(self, keyboard, key: KeyPress):
+    def handle_key(self, keyboard, side):
+        key = self.state[side].key
         mods = []
 
         if key.keycode in [ KC.LGUI, KC.LALT, KC.RALT, KC.LCTL, KC.LSFT ]:
@@ -295,7 +315,6 @@ class Taipo(Module):
         elif key.keycode == KC.MOD_GC:
             mods = [KC.LGUI,KC.LCTL]
         elif key.keycode == KC.MOD_GS:
-            debug('mod')
             mods = [KC.LGUI,KC.LSFT]
         elif key.keycode == KC.MOD_AC:
             mods = [KC.LALT,KC.LSFT]
@@ -316,9 +335,21 @@ class Taipo(Module):
 
         if len(mods) > 0:
             for mod in mods:
-                keyboard.tap_key(KC.OS(mod, tap_time=self.sticky_timeout))
+                if key.hold_handled:
+                    keyboard.remove_key(mod)
+                elif key.hold:
+                    keyboard.add_key(mod)
+                    self.state[side].key.hold_handled = True
+                else:
+                    keyboard.tap_key(KC.OS(mod, tap_time=self.sticky_timeout))
         else:
-            keyboard.tap_key(key.keycode)
+            if key.hold_handled:
+                keyboard.remove_key(key.keycode)
+            elif key.hold:
+                keyboard.add_key(key.keycode)
+                self.state[side].key.hold_handled = True
+            else:
+                keyboard.tap_key(key.keycode)
         
     def determine_key(self, val):
         if val in self.keymap:
