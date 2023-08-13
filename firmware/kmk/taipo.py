@@ -82,8 +82,7 @@ class TaipoMeta:
     
 class Taipo(Module):
     def __init__(self):
-        self.left_state = State()
-        self.right_state = State()
+        self.state = [State(), State()]
         for key, code in taipo_keycodes.items():
             make_key( names=(key,), meta=TaipoMeta(code))
 
@@ -98,24 +97,23 @@ class Taipo(Module):
 
     def process_key(self, keyboard, key, is_pressed, int_coord):
         if hasattr(key.meta, 'taipo_code'):
-            state = self.right_state if key.meta.taipo_code / 10 >= 1 else self.left_state
+            side = 1 if key.meta.taipo_code / 10 >= 1 else 0
             code = key.meta.taipo_code
             debug('activate', key.meta.taipo_code)
             debug('code', self.determine_key(key.meta.taipo_code))
             if is_pressed:
-                state.combo |= 1 << (key.meta.taipo_code % 10)
+                self.state[side].combo |= 1 << (key.meta.taipo_code % 10)
                 debug(state.combo)
             else:
-                state.key.keycode = self.determine_key(state.combo)
-                self.handle_key(keyboard, state.key)
-                state = State()
-                #self.clear_state(state)
+                self.state[side].key.keycode = self.determine_key(self.state[side].combo)
+                self.handle_key(keyboard, self.state[side].key)
+                self.clear_state(side)
                
         else:
             return key
 
-    def clear_state(self, state):
-        state = State()
+    def clear_state(self, side):
+        self.state[side] = State()
         
     def handle_key(self, keyboard, key: KeyPress):
         keyboard.tap_key(key.keycode)
