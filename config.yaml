@@ -32,15 +32,21 @@ points:
         spread: 1kx
       columns:
         pinky:
+          key:
+            splay: 5
         ring:
           key:
-            stagger: 0.6ky
+            stagger: 0.33ky
+            splay: -5
+            spread: 1kx + 4
         middle:
           key:
             stagger: 0.33ky
         index:
           key:
             stagger: -0.33ky
+            splay: -5
+            spread: 1kx + 1
       rows:
         bottom:
         top:
@@ -109,15 +115,6 @@ outlines:
     - what: rectangle
       where: /thumb/
       size: [1.5kx,ky-0.5]
-  lines:
-    - what: polygon
-      operation: stack
-      fillet: 0
-      points:
-      - ref: matrix_pinky_top
-      - ref: matrix_middle_top
-      - ref: thumbs_outer_cluster
-      - ref: thumbs_inner_cluster
   board:
     - what: rectangle
       where: /matrix/
