@@ -123,6 +123,10 @@ outlines:
           shift: [0.5kx,0.5ky]
         - ref: matrix_index_top
           shift: [0.5kx,0.5ky]
+        - ref: matrix_index_top
+          shift: [0.5kx,-0ky]
+        - ref: mirror_matrix_index_top
+          shift: [0.5kx,-0ky]
         - ref: mirror_matrix_index_top
           shift: [0.5kx,0.5ky]
         - ref: mirror_matrix_middle_top
