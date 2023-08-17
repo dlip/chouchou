@@ -21,7 +21,7 @@ units:
   rp2040zero_y: 23.5
   trrs_x: 12
   trrs_y: 6
-  boardPadding: 0
+  boardPadding: 7
 points:
   zones:
     matrix:
