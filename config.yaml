@@ -21,7 +21,7 @@ units:
   rp2040zero_y: 23.5
   trrs_x: 12
   trrs_y: 6
-  boardPadding: 0
+  boardPadding: 8
 points:
   zones:
     matrix:
@@ -38,7 +38,7 @@ points:
           key:
             stagger: 0.33ky
             splay: -5
-            spread: 1kx + 4
+            spread: 1kx + 2
         middle:
           key:
             stagger: 0.33ky
@@ -47,8 +47,13 @@ points:
             stagger: -0.33ky
             splay: -5
             spread: 1kx + 1
+        outer:
+          key:
+            stagger: -0.2ky
+            spread: 1kx + 1
       rows:
         bottom:
+        middle:
         top:
     thumbs:
       key:
@@ -72,7 +77,7 @@ points:
         cluster:
     mcu:
       anchor:
-        ref: matrix_index_top
+        ref: matrix_outer_top
         shift: [1.317kx, -0.5ky]
       key:
         width: rp2040zero_x
@@ -102,7 +107,7 @@ points:
         shift: [-0.5kx - 3, 0.5kx]
   mirror: &mirror
     ref: matrix_index_top
-    distance: 110
+    distance: 130
 outlines:
   raw:
     - what: rectangle
@@ -115,7 +120,80 @@ outlines:
     - what: rectangle
       where: /thumb/
       size: [1.5kx,ky-0.5]
+  boardLeft:
+    - what: polygon
+      operation: stack
+      fillet: 1
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_outer_top
+          shift: [0.5px,0.5py]
+        - ref: mcu
+          shift: [-rp2040zero_x/2,rp2040zero_y/2+2]
+        - ref: mcu
+          shift: [rp2040zero_x/2+4,rp2040zero_y/2+2]
+        - ref: trrs
+          shift: [trrs_x/2,-trrs_y/2]
+        - ref: thumbs_outer_cluster
+          shift: [0.75px,-0.5py]
+        - ref: thumbs_outer_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [-0.75px,0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [0.9px,0.5py]
+        - ref: matrix_ring_bottom
+          shift: [-0.45px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+  boardRight:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_outer_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_mcu
+          shift: [-rp2040zero_x/2,rp2040zero_y/2+2]
+        - ref: mirror_mcu
+          shift: [rp2040zero_x/2+4,rp2040zero_y/2+2]
+        - ref: mirror_trrs
+          shift: [trrs_x/2,-trrs_y/2]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [0.75px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [-0.75px,-0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.75px,0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [0.9px,0.5py]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [0.5px,-0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
   board:
+    - boardLeft
+    - boardRight
+  boarda:
     - what: rectangle
       where: /matrix/
       size: [kx+boardPadding,ky+boardPadding]
