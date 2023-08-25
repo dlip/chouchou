@@ -21,7 +21,8 @@ units:
   rp2040zero_y: 23.5
   trrs_x: 12
   trrs_y: 6
-  boardPadding: 8
+  boardPadding: 0
+  
 points:
   zones:
     matrix:
@@ -33,24 +34,26 @@ points:
       columns:
         pinky:
           key:
-            splay: 5
+            splay: 4
+          rows.top.skip: true
         ring:
           key:
-            stagger: 0.33ky
-            splay: -5
-            spread: 1kx + 2
+            stagger: 0.4ky
+            splay: -4
+            spread: 1kx + 1
         middle:
           key:
             stagger: 0.33ky
         index:
           key:
             stagger: -0.33ky
-            splay: -5
-            spread: 1kx + 1
+            splay: -2
+            spread: 1kx + 0.2
         outer:
           key:
-            stagger: -0.2ky
-            spread: 1kx + 1
+            stagger: -0.5ky
+            spread: 1kx
+          rows.bottom.skip: true
       rows:
         bottom:
         middle:
@@ -60,13 +63,13 @@ points:
         padding: 1kx
         spread: 1ky
       anchor:
-        ref: matrix_index_bottom
-        shift: [0.498kx, -1.68ky]
+        ref: matrix_outer_bottom
+        shift: [0kx, -0.5ky]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: -12
+            splay: -15
             rotate: 90
         outer:
           key:
@@ -91,7 +94,7 @@ points:
         height: trrs_y
     holePinkyTop:
       anchor:
-        ref: [matrix_pinky_top]
+        ref: [matrix_pinky_middle]
         shift: [0.5px + 2,0.5py + 1]
     holeMiddleBottom:
       anchor:
@@ -107,7 +110,7 @@ points:
         shift: [-0.5kx - 3, 0.5kx]
   mirror: &mirror
     ref: matrix_index_top
-    distance: 130
+    distance: 120
 outlines:
   raw:
     - what: rectangle
@@ -125,13 +128,17 @@ outlines:
       operation: stack
       fillet: 1
       points:
-        - ref: matrix_pinky_top
+        - ref: matrix_pinky_middle
           shift: [-0.5px,0.5py]
+        - ref: matrix_pinky_middle
+          shift: [0.55px,0.5py]
         - ref: matrix_ring_top
           shift: [-0.5px,0.5py]
         - ref: matrix_middle_top
           shift: [-0.5px,0.5py]
         - ref: matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: matrix_index_top
           shift: [0.5px,0.5py]
         - ref: matrix_outer_top
           shift: [0.5px,0.5py]
@@ -147,8 +154,8 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: thumbs_inner_cluster
           shift: [-0.75px,0.5py]
-        - ref: thumbs_inner_cluster
-          shift: [0.9px,0.5py]
+        - ref: matrix_index_bottom
+          shift: [0.5px,-0.5py]
         - ref: matrix_ring_bottom
           shift: [-0.45px,-0.5py]
         - ref: matrix_pinky_bottom
@@ -160,13 +167,17 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        - ref: mirror_matrix_pinky_top
+        - ref: mirror_matrix_pinky_middle
           shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_pinky_middle
+          shift: [0.55px,0.5py]
         - ref: mirror_matrix_ring_top
           shift: [-0.5px,0.5py]
         - ref: mirror_matrix_middle_top
           shift: [-0.5px,0.5py]
         - ref: mirror_matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref: mirror_matrix_index_top
           shift: [0.5px,0.5py]
         - ref: mirror_matrix_outer_top
           shift: [0.5px,0.5py]
@@ -182,10 +193,10 @@ outlines:
           shift: [-0.75px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
           shift: [-0.75px,0.5py]
-        - ref: mirror_thumbs_inner_cluster
-          shift: [0.9px,0.5py]
+        - ref: mirror_matrix_index_bottom
+          shift: [0.5px,-0.5py]
         - ref: mirror_matrix_ring_bottom
-          shift: [-0.5px,-0.5py]
+          shift: [-0.45px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [0.5px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
@@ -291,11 +302,11 @@ pcbs:
           GP28: matrix_index_top
           GP27: matrix_middle_top
           GP26: matrix_ring_top
-          GP15: matrix_pinky_top
+          GP15: matrix_pinky_middle
           GP14: matrix_index_bottom
           GP13: matrix_middle_bottom
           GP12: matrix_ring_bottom
-          GP11: matrix_pinky_bottom
+          GP11: matrix_pinky_middle
           GP10: thumbs_inner_cluster
           GP9: thumbs_outer_cluster
           GP8: GP8
@@ -328,11 +339,11 @@ pcbs:
           GP10: rGP10
           GP9: mirror_thumbs_outer_cluster
           GP8: mirror_thumbs_inner_cluster
-          GP7: mirror_matrix_pinky_bottom
+          GP7: mirror_matrix_pinky_middle
           GP6: mirror_matrix_ring_bottom
           GP5: mirror_matrix_middle_bottom
           GP4: mirror_matrix_index_bottom
-          GP3: mirror_matrix_pinky_top
+          GP3: mirror_matrix_pinky_middle
           GP2: mirror_matrix_ring_top
           GP1: mirror_matrix_middle_top
           GP0: mirror_matrix_index_top
