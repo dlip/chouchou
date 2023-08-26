@@ -43,8 +43,8 @@ points:
             stagger: 0.33ky
         index:
           key:
-            stagger: -0.33ky
-            splay: -3
+            stagger: -0.45ky
+            splay: -2
             spread: 1kx + 0.2
         outer:
           key:
@@ -59,21 +59,25 @@ points:
         padding: 1kx
         spread: 1ky
       anchor:
-        ref: matrix_index_bottom
-        shift: [0.4kx, -1.6ky]
+        ref: matrix_outer_bottom
+        shift: [-1.4kx, -1.25ky]
       columns:
         inner:
           key:
             width: 1.5kx
-            splay: -3
-            rotate: 90
+            splay: 20
+        middle:
+          key:
+            width: 1.5kx
+            splay: -20
+            spread: 1.12kx
+            stagger: -0.21ky
         outer:
           key:
             width: 1.5kx
-            splay: -15
-            spread: 1.2ky
-            stagger: -2.7
-            rotate: 90
+            splay: -18
+            spread: 1.18ky
+            stagger: -0.19ky
       rows:
         cluster:
     mcu:
@@ -93,19 +97,19 @@ points:
     holePinkyTop:
       anchor:
         ref: [matrix_pinky_top]
-        shift: [0.5px,0.5py + 2]
-    holeMiddleBottom:
-      anchor:
-        ref: [matrix_middle_bottom]
-        shift: [0,-0.5py - 2.5]
+        shift: [0.55px,0.6py]
     holeIndexTop:
       anchor:
         ref: [matrix_index_top]
-        shift: [-0.36px, 11.2]
-    holeThumbs:
+        shift: [-0.3px, 12]
+    holeInnerThumbs:
+      anchor:
+        ref: [thumbs_inner_cluster]
+        shift: [0.1kx, 0.7kx]
+    holeOuterThumbs:
       anchor:
         ref: [thumbs_outer_cluster]
-        shift: [-0.5kx - 2.8, 0.5kx]
+        shift: [-0.1kx, 0.7kx]
     support:
       anchor:
         ref: [mcu]
@@ -114,21 +118,10 @@ points:
     ref: matrix_index_top
     distance: 120
 outlines:
-  raw:
-    - what: rectangle
-      where: true
-      size: [px, py]
   keys:
     - what: rectangle
-      where: /matrix/
+      where: /matrix|thumb/
       size: [kx-0.5,ky-0.5]
-    - what: rectangle
-      where: /thumb/
-      size: [1.5kx,ky-0.5]
-    - what: rectangle
-      where: /thumb/
-      operation: subtract
-      size: [kx-0.5,ky-0.501]
   boardLeft:
     - what: polygon
       operation: stack
@@ -151,13 +144,17 @@ outlines:
         - ref: trrs
           shift: [trrs_x/2,-trrs_y/2]
         - ref: thumbs_outer_cluster
-          shift: [0.75px,-0.5py]
+          shift: [0.5px,0.5py]
         - ref: thumbs_outer_cluster
-          shift: [-0.6px,-0.5py]
+          shift: [0.5px,-0.5py]
+        - ref: thumbs_outer_cluster
+          shift: [-0.45px,-0.5py]
         - ref: thumbs_inner_cluster
-          shift: [-0.6px,0.5py]
+          shift: [0.45px,-0.5py]
         - ref: thumbs_inner_cluster
-          shift: [0.85px,0.5py]
+          shift: [-0.5px,-0.5py]
+        - ref: thumbs_inner_cluster
+          shift: [-0.5px,1.1py]
         - ref: matrix_ring_bottom
           shift: [-0.45px,-0.5py]
         - ref: matrix_pinky_bottom
@@ -167,7 +164,7 @@ outlines:
   boardRight:
     - what: polygon
       operation: stack
-      fillet: 2
+      fillet: 1
       points:
         - ref: mirror_matrix_pinky_top
           shift: [-0.5px,0.5py]
@@ -186,13 +183,17 @@ outlines:
         - ref: mirror_trrs
           shift: [trrs_x/2,-trrs_y/2]
         - ref: mirror_thumbs_outer_cluster
-          shift: [0.75px,-0.5py]
+          shift: [0.5px,0.5py]
         - ref: mirror_thumbs_outer_cluster
-          shift: [-0.6px,-0.5py]
+          shift: [0.5px,-0.5py]
+        - ref: mirror_thumbs_outer_cluster
+          shift: [-0.45px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [-0.6px,0.5py]
+          shift: [0.45px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [0.85px,0.5py]
+          shift: [-0.5px,-0.5py]
+        - ref: mirror_thumbs_inner_cluster
+          shift: [-0.5px,1.1py]
         - ref: mirror_matrix_ring_bottom
           shift: [-0.45px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
