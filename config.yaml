@@ -9,8 +9,8 @@ units:
   dpx: kx + 8
   dpy: ky + 8
   # M2 Screw Inserts
-  screwRadius: 1.5
-  standoffThickness: 3
+  screwRadius: 1.50
+  standoffThickness: 2
   standoffDepth: 3
   # Case
   pcbThickness: 1.6
@@ -45,7 +45,7 @@ points:
           key:
             stagger: -0.33ky
             splay: -3
-            spread: 1kx + 0.1
+            spread: 1kx + 0.2
         outer:
           key:
             stagger: -0.2ky
@@ -93,19 +93,23 @@ points:
     holePinkyTop:
       anchor:
         ref: [matrix_pinky_top]
-        shift: [0.5px + 2,0.5py + 1]
+        shift: [0.5px,0.5py + 2]
     holeMiddleBottom:
       anchor:
         ref: [matrix_middle_bottom]
-        shift: [0,-0.5py - 3]
+        shift: [0,-0.5py - 2.5]
     holeIndexTop:
       anchor:
         ref: [matrix_index_top]
-        shift: [-0.2px, 12]
+        shift: [-0.36px, 11.2]
     holeThumbs:
       anchor:
         ref: [thumbs_outer_cluster]
-        shift: [-0.5kx - 3, 0.5kx]
+        shift: [-0.5kx - 2.8, 0.5kx]
+    support:
+      anchor:
+        ref: [mcu]
+        shift: [0, 0.3kx]
   mirror: &mirror
     ref: matrix_index_top
     distance: 120
@@ -121,6 +125,10 @@ outlines:
     - what: rectangle
       where: /thumb/
       size: [1.5kx,ky-0.5]
+    - what: rectangle
+      where: /thumb/
+      operation: subtract
+      size: [kx-0.5,ky-0.501]
   boardLeft:
     - what: polygon
       operation: stack
@@ -145,11 +153,11 @@ outlines:
         - ref: thumbs_outer_cluster
           shift: [0.75px,-0.5py]
         - ref: thumbs_outer_cluster
-          shift: [-0.75px,-0.5py]
+          shift: [-0.6px,-0.5py]
         - ref: thumbs_inner_cluster
-          shift: [-0.75px,0.5py]
+          shift: [-0.6px,0.5py]
         - ref: thumbs_inner_cluster
-          shift: [0.9px,0.5py]
+          shift: [0.85px,0.5py]
         - ref: matrix_ring_bottom
           shift: [-0.45px,-0.5py]
         - ref: matrix_pinky_bottom
@@ -180,13 +188,13 @@ outlines:
         - ref: mirror_thumbs_outer_cluster
           shift: [0.75px,-0.5py]
         - ref: mirror_thumbs_outer_cluster
-          shift: [-0.75px,-0.5py]
+          shift: [-0.6px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [-0.75px,0.5py]
+          shift: [-0.6px,0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [0.9px,0.5py]
+          shift: [0.85px,0.5py]
         - ref: mirror_matrix_ring_bottom
-          shift: [-0.5px,-0.5py]
+          shift: [-0.45px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [0.5px,-0.5py]
         - ref: mirror_matrix_pinky_bottom
@@ -206,13 +214,17 @@ outlines:
     - what: outline
       name: board
       expand: wallThickness
-  mounting:
+  _mounting:
     - what: circle
       where: /hole/
       radius: screwRadius
-  standoff:
+  _support:
+    - what: rectangle
+      where: /support/
+      size: [5, 5]
+  _standoff:
     - what: outline
-      name: mounting
+      name: _mounting
       expand: standoffThickness
   combo:
     - xlBoard
@@ -220,8 +232,9 @@ outlines:
     - ^keys
     - ^_mcu
     - ^_trrs
-    #- ^standoff
-    #- ^mounting
+    - ^_standoff
+    - ^_mounting
+    - ^_support
 pcbs:
   chouchou:
     outlines:
@@ -344,9 +357,9 @@ pcbs:
           B: rP3V3
           C: rSCL
           D: rD
-      #holes:
-      #  what: mountinghole
-      #  where: /hole/
+      holes:
+        what: mountinghole
+        where: /hole/
 cases:
   bottom:
     - name: xlBoard
@@ -365,10 +378,13 @@ cases:
       name: _innerWall
       operation: subtract
   _holes:
-    - name: mounting
+    - name: _mounting
       extrude: baseThickness + standoffDepth
   _standoffs:
-    - name: standoff
+    - name: _standoff
+      extrude: baseThickness + standoffDepth
+  _supports:
+    - name: _support
       extrude: baseThickness + standoffDepth
   case:
     - what: case
@@ -377,6 +393,9 @@ cases:
     - what: case
       name: _holes
       operation: subtract
+    - what: case
+      name: _supports
+      operation: add
     - what: case
       name: bottom
       operation: add
