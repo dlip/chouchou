@@ -87,7 +87,7 @@
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
         "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
+        "silk_over_copper": "ignore",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
@@ -175,6 +175,217 @@
   "cvpcb": {
     "equivalence_files": []
   },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "pin_map": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "rule_severities": {
+      "bus_definition_conflict": "error",
+      "bus_entry_needed": "error",
+      "bus_to_bus_conflict": "error",
+      "bus_to_net_conflict": "error",
+      "conflicting_netclasses": "error",
+      "different_unit_footprint": "error",
+      "different_unit_net": "error",
+      "duplicate_reference": "error",
+      "duplicate_sheet_names": "error",
+      "endpoint_off_grid": "warning",
+      "extra_units": "error",
+      "global_label_dangling": "warning",
+      "hier_label_mismatch": "error",
+      "label_dangling": "error",
+      "lib_symbol_issues": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_input_pin": "warning",
+      "missing_power_pin": "error",
+      "missing_unit": "warning",
+      "multiple_net_names": "warning",
+      "net_not_bus_member": "warning",
+      "no_connect_connected": "warning",
+      "no_connect_dangling": "warning",
+      "pin_not_connected": "error",
+      "pin_not_driven": "error",
+      "pin_to_pin": "warning",
+      "power_pin_not_driven": "error",
+      "similar_labels": "warning",
+      "simulation_model_issue": "ignore",
+      "unannotated": "error",
+      "unit_value_mismatch": "error",
+      "unresolved_variable": "error",
+      "wire_dangling": "error"
+    }
+  },
   "libraries": {
     "pinned_footprint_libs": [],
     "pinned_symbol_libs": []
@@ -215,7 +426,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "GP12"
+        "pattern": "matrix_pinky_bottom"
       },
       {
         "netclass": "Default",
@@ -223,79 +434,139 @@
       },
       {
         "netclass": "Default",
-        "pattern": "GP26"
+        "pattern": "matrix_pinky_middle"
       },
       {
         "netclass": "Default",
-        "pattern": "GP13"
+        "pattern": "matrix_pinky_top"
       },
       {
         "netclass": "Default",
-        "pattern": "GP27"
+        "pattern": "matrix_ring_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "GP14"
+        "pattern": "matrix_ring_middle"
       },
       {
         "netclass": "Default",
-        "pattern": "GP28"
+        "pattern": "matrix_ring_top"
       },
       {
         "netclass": "Default",
-        "pattern": "GP15"
+        "pattern": "matrix_middle_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "GP29"
+        "pattern": "matrix_middle_middle"
       },
       {
         "netclass": "Default",
-        "pattern": "GP11"
+        "pattern": "matrix_middle_top"
       },
       {
         "netclass": "Default",
-        "pattern": "GP10"
+        "pattern": "matrix_index_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "GP7"
+        "pattern": "matrix_index_middle"
       },
       {
         "netclass": "Default",
-        "pattern": "GP3"
+        "pattern": "matrix_index_top"
       },
       {
         "netclass": "Default",
-        "pattern": "GP6"
+        "pattern": "matrix_outer_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "GP2"
+        "pattern": "matrix_outer_middle"
       },
       {
         "netclass": "Default",
-        "pattern": "GP5"
+        "pattern": "matrix_outer_top"
       },
       {
         "netclass": "Default",
-        "pattern": "GP1"
+        "pattern": "thumbs_inner_cluster"
       },
       {
         "netclass": "Default",
-        "pattern": "GP4"
+        "pattern": "thumbs_outer_cluster"
       },
       {
         "netclass": "Default",
-        "pattern": "GP0"
+        "pattern": "mirror_matrix_pinky_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "GP8"
+        "pattern": "rGND"
       },
       {
         "netclass": "Default",
-        "pattern": "GP9"
+        "pattern": "mirror_matrix_pinky_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_pinky_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_ring_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_ring_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_ring_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_middle_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_middle_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_middle_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_index_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_index_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_index_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_outer_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_outer_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_matrix_outer_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_thumbs_inner_cluster"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_thumbs_outer_cluster"
       },
       {
         "netclass": "Default",
@@ -304,6 +575,42 @@
       {
         "netclass": "Default",
         "pattern": "P3V3"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GP2"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "SCL"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GP0"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rP5V"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rP3V3"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rGP28"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rSCL"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "D"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rD"
       }
     ]
   },
@@ -319,8 +626,38 @@
     "page_layout_descr_file": ""
   },
   "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
+      "default_line_thickness": 6.0,
+      "default_text_size": 50.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size_choice": 3,
+      "label_size_ratio": 0.375,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.15
+    },
     "legacy_lib_dir": "",
-    "legacy_lib_list": []
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 1
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
   },
   "sheets": [],
   "text_variables": {}
