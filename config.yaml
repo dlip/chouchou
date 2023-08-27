@@ -154,9 +154,7 @@ outlines:
         - ref: thumbs_inner_cluster
           shift: [-0.5px,-0.5py]
         - ref: thumbs_inner_cluster
-          shift: [-0.5px,0.5py]
-        - ref: matrix_pinky_bottom
-          shift: [0.5px,-0.5py]
+          shift: [-0.5px,1py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   boardRight:
@@ -191,11 +189,7 @@ outlines:
         - ref: mirror_thumbs_inner_cluster
           shift: [-0.5px,-0.5py]
         - ref: mirror_thumbs_inner_cluster
-          shift: [-0.5px,1.1py]
-        - ref: mirror_matrix_ring_bottom
-          shift: [-0.45px,-0.5py]
-        - ref: mirror_matrix_pinky_bottom
-          shift: [0.5px,-0.5py]
+          shift: [-0.5px,1py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px,-0.5py]
   board:
@@ -309,7 +303,7 @@ pcbs:
         what: rp2040zero
         where: mirror_mcu
         adjust:
-          shift: [rp2040zero_x / 2 + 2.5, -rp2040zero_y / 2]
+          shift: [rp2040zero_x / 2 + 2.29, -rp2040zero_y / 2]
         params:
           P5V: rP5V
           GND: rGND
