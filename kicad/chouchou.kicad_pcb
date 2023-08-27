@@ -4,7 +4,7 @@
     (thickness 1.6)
   )
 
-  (paper "A3")
+  (paper "A4")
   (title_block
     (title "chouchou")
     (rev "v1.0.0")
