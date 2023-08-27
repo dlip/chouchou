@@ -297,8 +297,8 @@ pcbs:
           GP4:  thumbs_inner_cluster
           GP3:  thumbs_middle_cluster
           GP2:  thumbs_outer_cluster
-          GP1:  SCL
-          GP0:  GP0
+          GP1:  RX
+          GP0:  TX
       mcuRight:
         what: rp2040zero
         where: mirror_mcu
@@ -326,8 +326,8 @@ pcbs:
           GP4:  mirror_matrix_middle_top
           GP3:  mirror_matrix_index_top
           GP2:  mirror_matrix_outer_top
-          GP1:  rSCL
-          GP0:  rGND
+          GP1:  rRX
+          GP0:  rTX
       trrsLeft:
         what: trrs
         where: trrs
@@ -337,8 +337,8 @@ pcbs:
         params:
           A: GND
           B: P3V3
-          C: SCL
-          D: D
+          C: RX
+          D: TX
       trrsRight:
         what: trrs
         where: mirror_trrs
@@ -348,8 +348,8 @@ pcbs:
         params:
           A: rGND
           B: rP3V3
-          C: rSCL
-          D: rD
+          C: rTX
+          D: rRX
       holes:
         what: mountinghole
         where: /hole/
